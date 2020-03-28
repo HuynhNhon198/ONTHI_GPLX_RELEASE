@@ -13,7 +13,7 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+              import('../pages/onthi/onthi.module').then(m => m.OnthiPageModule)
           }
         ]
       },
@@ -23,7 +23,7 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+              import('../pages/hocthongminh/hocthongminh.module').then(m => m.HocthongminhPageModule)
           }
         ]
       },
@@ -33,7 +33,17 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+              import('../pages/luatgiaothong/luatgiaothong.module').then(m => m.LuatgiaothongPageModule)
+          }
+        ]
+      },
+      {
+        path: 'tab4',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../pages/caidat/caidat.module').then(m => m.CaidatPageModule)
           }
         ]
       },
