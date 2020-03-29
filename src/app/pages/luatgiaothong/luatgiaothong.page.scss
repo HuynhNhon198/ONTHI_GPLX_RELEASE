@@ -1,0 +1,44 @@
+ion-row.slide {
+  border-bottom: #d8d8d8 solid 1px;
+  padding-bottom: 6px;
+  h5 {
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+  }
+  h5:nth-child(1) {
+    background: #fb4d4d;
+  }
+}
+
+div.signs {
+  margin: 20px 10px;
+  h3 {
+    margin-top: 0;
+    display: flow-root;
+    span {
+      float: right;
+      font-size: 12px;
+      margin-top: 10px;
+      color: #0c4bb7;
+    }
+  }
+  p {
+    color: #929292;
+    text-align: justify;
+    margin: 0;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+  }
+}
+ion-slide {
+  width: auto !important;
+  margin: 0 10px;
+}
+
+ion-col.has-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { getListQuestions } from 'src/app/data/questions/get-data';
 
 @Component({
   selector: 'app-onthi',
@@ -10,6 +11,7 @@ export class OnthiPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(getListQuestions('a1'));
   }
 
 }

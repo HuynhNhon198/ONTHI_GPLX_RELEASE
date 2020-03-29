@@ -1,9 +1,59 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>luatgiaothong</ion-title>
-  </ion-toolbar>
+  <ion-row class="slide">
+    <ion-slides pager="false" [options]="slideOpts">
+      <ion-slide>
+        <h5 style="background: #fb4d4d21;
+        color: #e62323;
+        margin-left: 5px;" (click)="renderData('bienbaocam')">
+          Biển Cấm
+        </h5>
+      </ion-slide>
+      <ion-slide>
+        <h5 style="color: #4c8dff;
+        background: #4c8dff36;
+    " (click)="renderData('bienbaohieulenh')">
+          Biển Hiệu Lệnh
+        </h5>
+      </ion-slide>
+      <ion-slide>
+        <h5 style="color: #8e8b0e;
+        background: #c5b31d36;" (click)="renderData('bienbaonguyhiem')">
+          Biển Nguy Hiểm
+        </h5>
+      </ion-slide>
+      <ion-slide>
+        <h5 style="background: #2dd36f2e;
+        color: #0f9243;" (click)="renderData('bienbaochidan')">
+          Biển Chỉ Dẫn
+        </h5>
+      </ion-slide>
+    </ion-slides>
+  </ion-row>
 </ion-header>
 
 <ion-content>
-
+  <div class="signs">
+    <ion-row *ngFor="let item of signs.bienbao">
+      <ion-col size="4" class="has-img">
+        <img [src]="item.img" width="100%" />
+      </ion-col>
+      <ion-col size="8">
+        <h3>{{item.name}} <span style="float: right;">{{item.code}}</span></h3>
+        <p>{{item.desc}}</p>
+      </ion-col>
+    </ion-row>
+  </div>
+  <!-- <ion-row class="signs">
+    <ion-list>
+      <ion-item *ngFor="let item of signs.bienbao">
+        <ion-avatar slot="start">
+          <img [src]="item.img">
+        </ion-avatar>
+        <ion-label>
+          <h3>{{item.name}} <span style="float: right;">{{item.code}}</span></h3>
+          <p>{{item.desc}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-row> -->
 </ion-content>
