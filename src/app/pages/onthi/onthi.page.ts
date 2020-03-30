@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ThithuPage } from './thithu/thithu.page';
+import { getListQuestions } from 'src/app/data/questions/get-data';
 
 @Component({
   selector: 'app-onthi',
@@ -12,6 +13,7 @@ export class OnthiPage implements OnInit {
   constructor(public modalController: ModalController) { }
 
   ngOnInit() {
+    console.log(getListQuestions('a1'));
   }
   async presentThiThu() {
     const modal = await this.modalController.create({
