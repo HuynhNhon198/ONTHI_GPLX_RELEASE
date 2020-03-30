@@ -21,7 +21,11 @@ const routes: Routes = [
   {
     path: 'caidat',
     loadChildren: () => import('./pages/caidat/caidat.module').then( m => m.CaidatPageModule)
+  },  {
+    path: 'bailam',
+    loadChildren: () => import('./pages/bailam/bailam.module').then( m => m.BailamPageModule)
   }
+
 ];
 @NgModule({
   imports: [

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="arrow-back-outline" color="primary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>THI THỬ</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid><ion-row class="inline-row">
+    <div class="item-margin">
+      <div class="item-border">
+        <div>Ngẫu nhiên</div>
+      </div>
+    </div>
+  </ion-row>
+    <ion-row *ngFor="let item of counter(26); let i = index" class="inline-row">
+      <div class="item-margin">
+        <div class="item-border">
+          <div>Đề {{i+1}}</div>
+        </div>
+      </div>
+    </ion-row>
+  </ion-grid>
+</ion-content>

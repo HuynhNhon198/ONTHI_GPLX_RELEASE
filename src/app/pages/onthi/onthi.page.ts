@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { ThithuPage } from './thithu/thithu.page';
 
 @Component({
   selector: 'app-onthi',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OnthiPage implements OnInit {
 
-  constructor() { }
+  constructor(public modalController: ModalController) { }
 
   ngOnInit() {
+  }
+  async presentThiThu() {
+    const modal = await this.modalController.create({
+      component: ThithuPage
+    });
+    return await modal.present();
   }
 
 }

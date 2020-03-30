@@ -11,5 +11,7 @@ export class HocthongminhPage implements OnInit {
 
   ngOnInit() {
   }
-
+  counter(i: number) {
+    return new Array(i);
+  }
 }

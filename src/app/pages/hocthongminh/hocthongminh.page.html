@@ -1,9 +1,32 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>hocthongminh</ion-title>
+  <ion-toolbar class="ion-no-border">
+    <ion-buttons slot="start">
+      <ion-menu-button auto-hide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>HỌC THÔNG MINH</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-item-group class="group1">
+    <ion-item lines="none" class="item1">
+      <ion-textarea auto-grow="true" placeholder="Ghi chú:"></ion-textarea>
+    </ion-item>
+    <ion-item lines="none" class="item2">
+      <ion-label>
+        <h3>Bộ đề gồm</h3>
+        <p>30 ĐỀ</p>
+      </ion-label>
+      <ion-icon name="document-text" slot="start"></ion-icon>
+    </ion-item>
+  </ion-item-group>
+  <ion-grid>
+    <ion-row *ngFor="let item of counter(30); let i = index" class="inline-row">
+      <div class="item-margin">
+        <div class="item-border">
+          <div>{{i+1}}</div>
+        </div>
+      </div>
+    </ion-row>
+  </ion-grid>
 </ion-content>
