@@ -7,10 +7,11 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 })
 export class HelperService {
 
+  type = '';
   constructor(
     private storage: Storage,
     private statusBar: StatusBar
-  ) { }
+  ) {}
 
   async getStorage(key: string) {
     return await this.storage.get(key);
@@ -30,6 +31,19 @@ export class HelperService {
       this.statusBar.styleLightContent();
     } else {
       this.statusBar.styleDefault();
+    }
+  }
+
+  create_milisec(date) {
+    const d = (date === '' ? new Date() : new Date(date)).getTime().toString();
+    return Number(d.substring(0, d.length - 3));
+  }
+
+  sortArrObj(arr: any[], prop: string, type: string) {
+    if (type.toLowerCase() === 'asc') {
+      return arr.sort((a, b) => (a[prop] > b[prop]) ? 1 : ((b[prop] > a[prop]) ? -1 : 0));
+    } else {
+      return arr.sort((a, b) => (a[prop] < b[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0));
     }
   }
 

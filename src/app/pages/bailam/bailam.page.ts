@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { NavParams, ModalController, IonSlides, MenuController, AlertController } from '@ionic/angular';
 import { getQuestions } from 'src/app/data/questions/get-data';
-
+import { KetquathiComponent } from '../ketquathi/ketquathi.component';
+import { HelperService } from 'src/app/services/helper.service';
 
 export enum Result {
   Dung = 1,
@@ -18,37 +19,89 @@ export class BailamPage implements OnInit {
 
   @Input() idQuestion: string;
   @Input() time: number;
-  @ViewChild('slide', { static: true }) slide: IonSlides;
+  @Input() type: string;
+  @ViewChild('slide', { static: false }) slide: IonSlides;
   questions: any;
   timeView = '00:00';
   count = 0;
 
-  constructor(public modalCtrl: ModalController, navParams: NavParams, private menu: MenuController, public alertController: AlertController) {
+  constructor(public modalCtrl: ModalController,
+    navParams: NavParams,
+    private menu: MenuController,
+    public alertController: AlertController,
+    private helper: HelperService
+  ) {
     navParams.get('idQuestion');
     navParams.get('time');
   }
 
-  ngOnInit() {
-    this.questions = getQuestions('a1', this.idQuestion);
-    // this.timeView = this.convertToTimeView(this.time);
+  ngOnInit() { }
+
+  ionViewDidEnter() {
+    this.questions = getQuestions(this.type, this.idQuestion);
     this.countDown();
   }
 
-  submit() {
-    this.questions.questions.forEach(question => {
+  async submit() {
+    const alert = await this.alertController.create({
+      header: 'NỘP BÀI THI NGAY?',
+      message: 'Chỗ này để hỏi gì đó tí nữa sửa',
+      buttons: [
+        {
+          text: 'Không',
+          // role: 'cancel',
+        }, {
+          text: 'Có',
+          handler: () => {
+            this.submitHandler();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+
+  }
+
+  submitHandler() {
+    const result: any = {
+      questions: [{
+        answers: [],
+        result: Number
+      }
+      ],
+      pass: Boolean,
+      ctime: Number,
+      id: String
+    };
+    let socaudung = 0;
+    result.questions = this.questions.questions.map(question => {
       const corrects = question.answers.filter(x => x.correct).length;
       const checkeds = question.answers.filter(x => x.correct && x.checked === x.correct).length;
       const sl = question.answers.filter(x => x.checked).length;
+      const answers = question.answers.map(x => x.checked);
+      let re: number;
       if (corrects === checkeds && checkeds === sl) {
-        question.result = Result.Dung;
+        socaudung++;
+        re = Result.Dung;
       } else {
         if (sl !== 0) {
-          question.result = Result.Sai;
+          re = Result.Sai;
         } else {
-          question.result = Result.ChuaLam;
+          re = Result.ChuaLam;
         }
       }
+      return {
+        answers,
+        result: re
+      }
     });
+
+    if (socaudung >= 16) { result.pass = true; } else { result.pass = false; }
+    result.ctime = this.helper.create_milisec('');
+    result.id = this.idQuestion;
+    this.helper.setStorage(this.idQuestion, result);
+    this.presentKetQuaThi();
   }
 
   countDown() {
@@ -101,6 +154,18 @@ export class BailamPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  async presentKetQuaThi() {
+    const modal = await this.modalCtrl.create({
+      component: KetquathiComponent,
+      componentProps: {
+        idQuestion: this.idQuestion,
+        // time,
+        // type: this.helper.type
+      }
+    });
+    return await modal.present();
   }
 
 }

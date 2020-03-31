@@ -21,7 +21,7 @@
     <ion-row *ngFor="let item of listQuestions; let i = index" class="inline-row" (click)="presentCauHoi(item.id, item.time)">
       <div class="item-margin">
         <div class="item-border">
-          <div>Đề {{i+1}}</div>
+          <div>Đề {{item.num}}</div>
         </div>
       </div>
     </ion-row>

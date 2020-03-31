@@ -40,6 +40,7 @@ export class SelectTypeComponent implements OnInit {
 
   async setType(type: string) {
     await this.helper.setStorage('type', type);
+    this.helper.type = type;
     this.modalController.dismiss({
       type
     });

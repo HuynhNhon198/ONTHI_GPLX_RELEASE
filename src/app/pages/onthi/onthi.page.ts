@@ -34,6 +34,7 @@ export class OnthiPage implements OnInit {
       this.renderData(this.type);
     } else {
       this.type = type;
+      this.helper.type = type;
       this.renderData(this.type);
     }
 

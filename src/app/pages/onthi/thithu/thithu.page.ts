@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { BailamPage } from '../../bailam/bailam.page';
 import { getListQuestions } from 'src/app/data/questions/get-data';
+import { HelperService } from 'src/app/services/helper.service';
 
 @Component({
   selector: 'app-thithu',
@@ -10,12 +11,12 @@ import { getListQuestions } from 'src/app/data/questions/get-data';
 })
 export class ThithuPage implements OnInit {
 
-  constructor(public modalCtrl: ModalController) { }
+  constructor(public modalCtrl: ModalController, private helper: HelperService) { }
 
   listQuestions: { num: any; time: any; id: any; q_length: any; }[];
 
   ngOnInit() {
-    this.listQuestions = getListQuestions('a1');
+    this.listQuestions = this.helper.sortArrObj(getListQuestions(this.helper.type), 'num', 'asc');
   }
 
   randomCauHoi() {
@@ -23,12 +24,13 @@ export class ThithuPage implements OnInit {
     this.presentCauHoi(this.listQuestions[num].id, this.listQuestions[num].time);
   }
 
-  async presentCauHoi(idQuestion: number, time: number) {
+  async presentCauHoi(idQuestion: string, time: number) {
     const modal = await this.modalCtrl.create({
       component: BailamPage,
       componentProps: {
         idQuestion,
-        time
+        time,
+        type: this.helper.type
       }
     });
     return await modal.present();
