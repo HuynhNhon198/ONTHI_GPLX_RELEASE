@@ -1,8 +1,8 @@
 <ion-header>
   <ion-toolbar class="ion-no-border">
-    <ion-buttons slot="start">
+    <!-- <ion-buttons slot="start">
       <ion-menu-button auto-hide="false"></ion-menu-button>
-    </ion-buttons>
+    </ion-buttons> -->
     <ion-title>ÔN THI GPLX - {{type | uppercase}}</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -46,7 +46,9 @@
         </div>
       </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row style='border: #3880ff59 dashed 2px;background: #1da1f221;
+    margin: 20px;
+    border-radius: 15px;'>
       <div class="roadmap">
         <h4>QUÁ TRÌNH HỌC</h4>
         <ion-item lines='none'>
@@ -55,24 +57,24 @@
         </ion-item>
       </div>
     </ion-row>
-    <ion-row>
+    <ion-row *ngIf="list" class="roadmap">
       <ion-list>
         <ion-item lines='none'>
           <ion-avatar slot="start">
-            <img src="../../../assets/traffic-sign.png">
+            <img src="assets/all.png">
           </ion-avatar>
           <ion-label>
-            <h3>BIỂN BÁO ĐƯỜNG BỘ <span style="float: right;">0/12</span></h3>
-            <p><ion-progress-bar value="0.5"></ion-progress-bar></p>
+            <h3>HỌC TẤT CẢ <span style="float: right;">0/{{list.all.length}}</span></h3>
+            <p><ion-progress-bar [value]="0.3"></ion-progress-bar></p>
           </ion-label>
         </ion-item>
         <ion-item lines='none'>
           <ion-avatar slot="start">
-            <img src="../../../assets/warning.png">
+            <img src="assets/traffic-sign.png">
           </ion-avatar>
           <ion-label>
-            <h3>LUẬT GIAO THÔNG <span style="float: right;">0/12</span></h3>
-            <p><ion-progress-bar value="0.3"></ion-progress-bar></p>
+            <h3>BIỂN BÁO ĐƯỜNG BỘ <span style="float: right;">0/{{list.signs.length}}</span></h3>
+            <p><ion-progress-bar value="0.5"></ion-progress-bar></p>
           </ion-label>
         </ion-item>
         <ion-item lines='none'>
@@ -80,7 +82,7 @@
             <img src="assets/roundabout.png">
           </ion-avatar>
           <ion-label>
-            <h3>SA HÌNH <span style="float: right;">0/12</span></h3>
+            <h3>SA HÌNH <span style="float: right;">0/{{list.shape.length}}</span></h3>
             <p><ion-progress-bar value="0.8"></ion-progress-bar></p>
           </ion-label>
         </ion-item>

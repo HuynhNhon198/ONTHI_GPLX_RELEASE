@@ -20,17 +20,42 @@ const getData = (type: string) => {
 
 export function getListQuestions(type: string) {
     const data = getData(type)
-    .map(x => {
-        return {
-            num: x.num,
-            time: x.time,
-            id: x.id,
-            q_length: x.questions.length
-        };
-    });
+        .map(x => {
+            return {
+                num: x.num,
+                time: x.time,
+                id: x.id,
+                q_length: x.questions.length
+            };
+        });
     return data;
 }
 
 export function getQuestions(type: string, id: string) {
     return getData(type).find(x => x.id === id);
 }
+
+export function getAllQuestions(type: string) {
+    const allQuestions = [];
+    const data = getData(type);
+    for (const questions of data) {
+        for (const q of questions.questions) {
+            // if (q.img.length > 0) {
+            //     const vitri = Number(q.img.match(/\d+/)[0]);
+            //     if (255 < vitri && vitri < 356) {
+            //         signData.push(q);
+            //     }
+            // }
+            // console.log(allQuestions, q.question.trim().toLowerCase() );
+            if (allQuestions.findIndex(x => x.questions === q.question) === -1) {
+                allQuestions.push(q);
+            }
+        }
+    }
+
+    return {
+        questions: allQuestions,
+        time: 1200
+    };
+}
+

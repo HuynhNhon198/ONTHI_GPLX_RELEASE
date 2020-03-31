@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ThithuPage } from './thithu/thithu.page';
-import { getListQuestions } from 'src/app/data/questions/get-data';
+import { getListQuestions, getAllQuestions } from 'src/app/data/questions/get-data';
 import { HelperService } from 'src/app/services/helper.service';
 import { SelectTypeComponent } from 'src/app/select-type/select-type.component';
 
@@ -12,6 +12,11 @@ import { SelectTypeComponent } from 'src/app/select-type/select-type.component';
 })
 export class OnthiPage implements OnInit {
   type = '';
+  list: {
+    all: any;
+    signs: any;
+    shape: any;
+  };
   constructor(
     public modalController: ModalController,
     private helper: HelperService
@@ -48,9 +53,23 @@ export class OnthiPage implements OnInit {
   }
 
   renderData(type: string) {
-    console.log(getListQuestions(type));
+    // console.log(getListQuestions(type));
+    const all = getAllQuestions(type).questions;
+
+    const filterType = (x, min: number, max: number) => {
+      if (x.img === '') {
+        return false;
+      }
+      const vitri = Number(x.img.match(/\d+/)[0]);
+      return (min < vitri && vitri < max);
+    };
+
+    this.list = {
+      all,
+      signs: all.filter(x => filterType(x, 255, 356)),
+      shape: all.filter(x => filterType(x, 355, 451))
+    };
+    console.log(this.list);
   }
-
-
 
 }
