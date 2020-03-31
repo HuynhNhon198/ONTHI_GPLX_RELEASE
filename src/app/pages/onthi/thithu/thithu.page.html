@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button (click)="dismiss()">
-        <ion-icon name="arrow-back-outline" color="primary"></ion-icon>
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title>THI THỬ</ion-title>
@@ -14,7 +14,7 @@
     <ion-row class="inline-row" (click)="randomCauHoi()">
       <div class="item-margin">
         <div class="item-border">
-          <div>Ngẫu nhiên</div>
+          <div><ion-icon style="font-size: 35px;" name="shuffle"></ion-icon></div>
         </div>
       </div>
     </ion-row>

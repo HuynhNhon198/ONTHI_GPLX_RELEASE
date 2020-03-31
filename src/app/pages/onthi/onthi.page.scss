@@ -46,6 +46,7 @@ ion-content {
     }
     ion-item {
         color: #003694;
+        --background: #0000;
     }
   }
 
@@ -64,7 +65,12 @@ ion-content {
 ion-toolbar {
     ion-title.md {
         text-align: center;
-        padding-right: 55px;
-        padding-left: 0px;
+        // padding-right: 55px;
+        // padding-left: 0px;
     }
+}
+
+.roadmap ion-item {
+  --padding-bottom: 10px;
+
 }

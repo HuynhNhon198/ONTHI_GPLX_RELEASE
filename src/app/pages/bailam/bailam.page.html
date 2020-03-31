@@ -1,68 +1,77 @@
-<ion-menu side="end" menuId="chonCauHoi" contentId="main">
-  <ion-header>
-    <ion-toolbar color="primary">
-      <ion-title>Chọn Câu Hỏi</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content>
-    <ion-list>
-      <ion-item *ngFor="let question of questions.questions; let i= index" (click)="slideTo(i)">Câu số {{i+1}}
-      </ion-item>
-    </ion-list>
-  </ion-content>
-</ion-menu>
-
-<div id="main">
-  <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-button (click)="dismiss()">
-          <ion-icon name="arrow-back-outline" color="primary"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-      <ion-title *ngIf="timeView!=='00:00'">{{timeView}}</ion-title>
-      <ion-buttons slot="end">
-        <ion-button (click)="openMenu()">
-          <ion-icon name="list-outline" color="primary"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
-
-  <ion-content fullscreen class="ion-padding">
-    <ion-slides #slide>
-
-      <ion-slide *ngFor="let question of questions.questions; let i= index">
-        <div class="slide">
-          <h4>Câu {{i+1}}/{{questions.questions.length}}</h4>
-          <ion-item>
-            <ion-label>{{question.question}}</ion-label>
-          </ion-item>
-          <img *ngIf="question.img" src="{{question.img}}" />
-          <ion-list>
-            <ion-item lines="none" *ngFor="let answer of question.answers">
-              <ion-label>{{answer.answer}}</ion-label>
-              <ion-checkbox slot="start" [(ngModel)]="answer.checked"></ion-checkbox>
-            </ion-item>
-          </ion-list>
-        </div>
-      </ion-slide>
-
-    </ion-slides>
-  </ion-content>
+<div *ngIf="questions">
+  <ion-menu side="end"  menuId="chonCauHoi" contentId="main">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Danh Mục Câu Hỏi</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item  *ngFor="let question of questionInMenu; let i= index" (click)="slideTo(i)">
+          <ion-label>
+            <h3 style="font-size: 18px;
+            font-weight: 500;">Câu số {{i+1}} <span class="status" [ngStyle]='{"background": question.checked === "ĐÃ LÀM"? "#3880ff": "#dc4545"}'>{{question.checked}}</span></h3>
+            <p style="font-size: 12px;color: #666666">{{question.q}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  
+  <div >
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+          <ion-button (click)="dismiss()">
+            <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+        <ion-title *ngIf="timeView!=='00:00'">{{timeView}}</ion-title>
+        <ion-buttons slot="end">
+          <span></span>
+          <ion-button (click)="openMenu()">
+            <ion-icon slot="icon-only" name="list"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+  
+    <ion-content id="main" fullscreen class="ion-padding">
+      <ion-slides #slide>
+  
+        <ion-slide *ngFor="let question of questions.questions; let i= index">
+          <div class="slide">
+            <h4>Câu {{i+1}}/{{questions.questions.length}}</h4>
+            <ion-text color="dark">
+              <h5>{{question.question}}</h5>
+            </ion-text>
+            <img *ngIf="question.img" src="{{question.img}}" />
+            <ion-list>
+              <ion-item text-wrap lines="none" *ngFor="let answer of question.answers">
+                <p>{{answer.answer}}</p>
+                <ion-checkbox color="primary" slot="start" [(ngModel)]="answer.checked"></ion-checkbox>
+              </ion-item>
+            </ion-list>
+          </div>
+        </ion-slide>
+      </ion-slides>
+    </ion-content>
+  
+  </div>
 
 </div>
-<ion-footer>
-  <ion-toolbar>
+
+<ion-footer *ngIf="questions">
+  <ion-toolbar color='primary'>
     <ion-buttons slot="start">
       <ion-button (click)="slide.slidePrev()">
-        <ion-icon name="chevron-back-outline"></ion-icon>
+        <ion-icon slot="icon-only" name="chevron-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title (click)="submit()">Nộp bài</ion-title>
+    <ion-title (click)="submit()">NỘP BÀI</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="slide.slideNext()">
-        <ion-icon name="chevron-forward-outline"></ion-icon>
+        <ion-icon slot="icon-only" name="chevron-forward"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>

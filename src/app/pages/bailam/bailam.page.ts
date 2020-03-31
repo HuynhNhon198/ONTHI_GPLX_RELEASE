@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { NavParams, ModalController, IonSlides, MenuController, AlertController } from '@ionic/angular';
 import { getQuestions } from 'src/app/data/questions/get-data';
+import { HelperService } from 'src/app/services/helper.service';
 
 
 export enum Result {
@@ -18,17 +19,22 @@ export class BailamPage implements OnInit {
 
   @Input() idQuestion: string;
   @Input() time: number;
-  @ViewChild('slide', { static: true }) slide: IonSlides;
+  @ViewChild('slide', { static: false }) slide: IonSlides;
   questions: any;
   timeView = '00:00';
   count = 0;
+  questionInMenu = [];
 
-  constructor(public modalCtrl: ModalController, navParams: NavParams, private menu: MenuController, public alertController: AlertController) {
+  constructor(private helper: HelperService, public modalCtrl: ModalController, navParams: NavParams, private menu: MenuController, public alertController: AlertController) {
     navParams.get('idQuestion');
     navParams.get('time');
   }
 
   ngOnInit() {
+    this.helper.setColorStatusBar('#3171e0', true);
+  }
+
+  ionViewDidEnter() {
     this.questions = getQuestions('a1', this.idQuestion);
     // this.timeView = this.convertToTimeView(this.time);
     this.countDown();
@@ -65,6 +71,12 @@ export class BailamPage implements OnInit {
   }
 
   openMenu() {
+    this.questionInMenu = this.questions.questions.map(x => {
+      return {
+        q: x.question,
+        checked: x.answers.find(y => y.checked) ? 'ĐÃ LÀM' : 'CHƯA LÀM'
+      };
+    });
     this.menu.enable(true, 'chonCauHoi');
     this.menu.open('chonCauHoi');
   }
@@ -77,6 +89,7 @@ export class BailamPage implements OnInit {
   }
 
   slideTo(index: number) {
+    console.log(index);
     this.menu.close();
     this.slide.slideTo(index);
   }
@@ -92,6 +105,7 @@ export class BailamPage implements OnInit {
         }, {
           text: 'Có',
           handler: () => {
+            this.helper.setColorStatusBar('#ffffff');
             this.modalCtrl.dismiss({
               dismissed: true
             });
