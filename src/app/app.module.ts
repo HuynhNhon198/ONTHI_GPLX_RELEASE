@@ -9,13 +9,16 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ThithuPage } from './pages/onthi/thithu/thithu.page';
+import { BailamPage } from './pages/bailam/bailam.page';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, ThithuPage],
+  declarations: [AppComponent, ThithuPage, BailamPage],
   entryComponents: [
-    ThithuPage
+    ThithuPage,
+    BailamPage
   ],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [FormsModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule],
   providers: [
     StatusBar,
     SplashScreen,

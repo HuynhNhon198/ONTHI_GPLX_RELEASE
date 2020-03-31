@@ -10,14 +10,15 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid><ion-row class="inline-row">
-    <div class="item-margin">
-      <div class="item-border">
-        <div>Ngẫu nhiên</div>
+  <ion-grid>
+    <ion-row class="inline-row" (click)="randomCauHoi()">
+      <div class="item-margin">
+        <div class="item-border">
+          <div>Ngẫu nhiên</div>
+        </div>
       </div>
-    </div>
-  </ion-row>
-    <ion-row *ngFor="let item of counter(26); let i = index" class="inline-row">
+    </ion-row>
+    <ion-row *ngFor="let item of listQuestions; let i = index" class="inline-row" (click)="presentCauHoi(item.id, item.time)">
       <div class="item-margin">
         <div class="item-border">
           <div>Đề {{i+1}}</div>
