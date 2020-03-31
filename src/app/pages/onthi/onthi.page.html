@@ -3,11 +3,12 @@
     <ion-buttons slot="start">
       <ion-menu-button auto-hide="false"></ion-menu-button>
     </ion-buttons>
-    <ion-title>ÔN THI GPLX</ion-title>
+    <ion-title>ÔN THI GPLX - {{type | uppercase}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="type !== ''">
+
   <ion-grid>
     <ion-row>
       <ion-col class="pos-1" (click)="presentThiThu()">

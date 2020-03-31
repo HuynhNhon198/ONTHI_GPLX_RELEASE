@@ -5,23 +5,37 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { IonicStorageModule } from '@ionic/storage';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ThithuPage } from './pages/onthi/thithu/thithu.page';
 import { BailamPage } from './pages/bailam/bailam.page';
 import { FormsModule } from '@angular/forms';
+import { SelectTypeComponent } from './select-type/select-type.component';
+
 
 @NgModule({
-  declarations: [AppComponent, ThithuPage, BailamPage],
+  declarations: [
+    AppComponent,
+    ThithuPage,
+    SelectTypeComponent
+  ],
   entryComponents: [
     ThithuPage,
-    BailamPage
+    BailamPage,
+    SelectTypeComponent
   ],
-  imports: [FormsModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot({ hardwareBackButton: false }),
+    AppRoutingModule,
+    IonicStorageModule.forRoot()],
   providers: [
     StatusBar,
     SplashScreen,
+    SocialSharing,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

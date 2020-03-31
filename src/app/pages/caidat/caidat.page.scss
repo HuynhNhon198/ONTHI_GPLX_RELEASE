@@ -1,0 +1,28 @@
+ion-content {
+    --padding-top: 20px;
+
+    ion-item {
+        border-bottom: #e8e8e8ab solid 1px;
+
+        h1 {
+            text-transform: uppercase;
+            font-weight: 500;
+            color: #293e63f2;
+        }
+
+        ion-icon {
+            color: #0442af;
+        }
+
+        p {
+            color: #545454;
+            margin-left: 5px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        ion-note.md {
+            font-size: 14px;
+            color: #000;
+        }
+    }
+}

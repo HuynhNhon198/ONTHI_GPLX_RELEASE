@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { getSignByType } from 'src/app/data/signs';
+import { IonSlides } from '@ionic/angular';
 
 @Component({
   selector: 'app-luatgiaothong',
@@ -21,6 +22,10 @@ export class LuatgiaothongPage implements OnInit {
   renderData(type: string) {
     this.signs = getSignByType(type);
     console.log(this.signs);
+  }
+
+  segmentChanged(ev: any) {
+    this.renderData(ev.detail.value);
   }
 
 }

@@ -49,7 +49,6 @@ export class BailamPage implements OnInit {
         }
       }
     });
-    console.log(this.questions.questions);
   }
 
   countDown() {
