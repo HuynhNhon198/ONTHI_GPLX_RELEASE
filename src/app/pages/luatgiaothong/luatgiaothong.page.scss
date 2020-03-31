@@ -1,16 +1,12 @@
-ion-row.slide {
-  border-bottom: #d8d8d8 solid 1px;
-  padding-bottom: 6px;
-  h5 {
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 4px;
-  }
-  h5:nth-child(1) {
-    background: #fb4d4d;
+
+.horizontal-scroll {
+  overflow: auto;
+  white-space: nowrap;
+
+  ion-chip {
+    margin: 15px 0 15px 15px;
   }
 }
-
 div.signs {
   margin: 20px 10px;
   h3 {

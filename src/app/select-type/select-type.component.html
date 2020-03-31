@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>LỰA CHỌN HẠNG XE</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item *ngFor="let item of types" (click)="setType(item.name)">
+      <ion-label>
+        <h1>HẠNG {{item.name | uppercase}}</h1>
+        <p>{{item.desc}}</p>
+      </ion-label>
+      <ion-note slot="end" *ngIf="type === item.name">
+        <ion-icon color="primary" name="checkmark-circle"></ion-icon>
+      </ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer *ngIf="showCancel" (click)="modalController.dismiss({type: undefined})" >
+  <ion-toolbar color="danger">
+    <ion-title>HỦY</ion-title>
+  </ion-toolbar>
+</ion-footer>

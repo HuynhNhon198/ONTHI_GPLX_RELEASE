@@ -1,11 +1,11 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-title>caidat</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content>
-  <ion-list>
+  <!-- <ion-list>
     <ion-item-divider>
       <ion-label color="primary">Trang chủ</ion-label>
       <ion-icon name="home" size="large" slot="start"></ion-icon>
@@ -38,5 +38,50 @@
       <ion-label>Hẹn giờ</ion-label>
       <ion-icon name="alarm" size="large" slot="start"></ion-icon>
     </ion-item>
+  </ion-list> -->
+  <ion-list>
+    <ion-item lines='none' (click)="router.navigate(['tabs/tab1'])" >
+      <ion-label><h1>Trang chủ</h1></ion-label>
+      <ion-icon name="home-outline" slot="start"></ion-icon>
+    </ion-item>
+    <ion-item lines='none' (click)="setType()">
+      <ion-label><h1>bằng lái</h1></ion-label>
+      <ion-note slot="end">{{type | uppercase}}</ion-note>
+      <ion-icon name="reader-outline" slot="start"></ion-icon>
+    </ion-item>
+    <ion-item lines='none'>
+      <ion-label><h1>Đánh giá</h1></ion-label>
+      <ion-icon name="star-outline" slot="start"></ion-icon>
+    </ion-item>
+    <ion-item lines='none' (click)="share()">
+      <ion-label><h1>Chia sẻ</h1></ion-label>
+      <ion-icon name="share-social-outline" slot="start"></ion-icon>
+    </ion-item>
+    <ion-item lines='none' (click)="openMail()">
+      <ion-label><h1>Trợ giúp & Hỏi đáp</h1></ion-label>
+      <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+    </ion-item>
+    <ion-item lines='none' style="margin-top: 50px;
+    border-top: #e8e8e8ab solid 1px;
+    border-bottom: unset;">
+      <ion-label><p>Hiển thị màu kết quả</p></ion-label>
+      <ion-toggle slot="end" name="blueberry" checked></ion-toggle>
+    </ion-item>
+    <ion-item lines='none'>
+      <ion-label><p>Hiển thị gợi ý và đáp án đúng</p></ion-label>
+      <ion-toggle slot="end" name="blueberry"></ion-toggle>
+    </ion-item>
   </ion-list>
+  <img style="margin-top: 20px;" src="assets/xuphat.png" alt="">
+  <p style="text-align: right">Nguồn ảnh: Tri Thức Trẻ</p>
+  <!-- <ion-row>
+    <ion-col size="8" >
+      <h3>Hiển thị màu kết quả ngay khi làm</h3>
+    </ion-col>
+    <ion-col size="4" >
+      <ion-item lines="none">
+        <ion-toggle slot="end" name="blueberry" checked></ion-toggle>
+      </ion-item>
+    </ion-col>
+  </ion-row> -->
 </ion-content>
