@@ -20,6 +20,7 @@ import { SelectTypeComponent } from './select-type/select-type.component';
   declarations: [
     AppComponent,
     ThithuPage,
+    BailamPage,
     SelectTypeComponent
   ],
   entryComponents: [
@@ -29,6 +30,7 @@ import { SelectTypeComponent } from './select-type/select-type.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     IonicModule.forRoot({ hardwareBackButton: false }),
     AppRoutingModule,
     IonicStorageModule.forRoot()],
