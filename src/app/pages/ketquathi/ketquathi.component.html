@@ -13,7 +13,10 @@
 </ion-header>
 
 <ion-content *ngIf='data' >
-  <h1>RỚT</h1>
+  <h1 *ngIf="data.pass; else fail">PASS</h1>
+  <ng-template #fail>
+    <h1>RỚT</h1>
+  </ng-template>
   <ion-row class="resul-type">
     <ion-col [ngClass]="{'highlight': r == 0}" sizes (click)="getResult(0)" style="border-right: none;font-size: 18px;border-radius: 20px 0 0 20px;padding-top: 13px;">Tất cả</ion-col>
     <ion-col [ngClass]="{'highlight-1': r == 1}"  (click)="getResult(1)" style="border-right: none;">

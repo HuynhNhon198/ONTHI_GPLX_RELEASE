@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>LỊCH SỬ THI</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="listQuestions">
+  <ion-item-group>
+    <ion-item *ngFor="let question of listQuestions">
+      <ion-label (click)="presentKetQuaThi(question.id)">
+        <div>
+          <h4>Đề Số {{question.num}}</h4>
+          <span>{{question.ctime*1000 | date:'hh:mm MM/dd/yyyy'}}</span>
+        </div>
+        <ion-row>
+          <ion-col *ngIf="question.pass; else fail">
+            PASS
+          </ion-col>
+          <ng-template #fail>
+            RỚT
+          </ng-template>
+          <ion-col>
+            <img src="assets/correct.png" width="16px" alt="">
+            <span>{{question.nPass}}</span>
+          </ion-col>
+          <ion-col><img src="assets/cancel.png" width="16px" alt="">
+            <span>{{question.nFail}}</span></ion-col>
+          <ion-col>
+            <img src="assets/error.png" width="16px" alt="">
+            <span>{{question.questions.length - question.nPass - question.nFail}}</span>
+          </ion-col>
+        </ion-row>
+      </ion-label>
+    </ion-item>
+  </ion-item-group>
+</ion-content>

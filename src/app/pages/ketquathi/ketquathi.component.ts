@@ -38,14 +38,15 @@ export class KetquathiComponent implements OnInit {
     navParams.get('idQuestion');
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ionViewDidEnter() {
     this.getData();
   }
 
   async getData() {
-    this.data = await this.helper.getStorage(this.idQuestion);
+    const history = await this.helper.getStorage(`history-${this.helper.type}`);
+    this.data = history.filter(x => x.id === this.idQuestion)[0];
     console.log(this.data);
     this.nPass = this.data.questions.filter(
       x => x.result === Result.Dung

@@ -61,8 +61,10 @@ export class BailamPage implements OnInit {
 
   }
 
-  submitHandler() {
+  async submitHandler() {
+    let history: any[];
     const result: any = {
+      num: Number,
       questions: [{
         answers: [],
         result: Number
@@ -98,7 +100,19 @@ export class BailamPage implements OnInit {
     if (socaudung >= 16) { result.pass = true; } else { result.pass = false; }
     result.ctime = this.helper.create_milisec('');
     result.id = this.idQuestion;
-    this.helper.setStorage(this.idQuestion, result);
+    result.num = this.questions.num;
+
+    history = await this.helper.getStorage(`history-${this.helper.type}`);
+    if (!history) {
+      history = [];
+    }
+    const index = history.findIndex(x => x.id === this.idQuestion);
+    if (index !== -1) {
+      history[index] = result;
+    } else {
+      history.push(result);
+    }
+    this.helper.setStorage(`history-${this.helper.type}`, history);
     this.presentKetQuaThi();
   }
 
@@ -172,8 +186,8 @@ export class BailamPage implements OnInit {
       }
     });
     await modal.present();
-
     await modal.onDidDismiss();
+
     this.helper.setColorStatusBar('#ffffff');
     this.close();
   }
