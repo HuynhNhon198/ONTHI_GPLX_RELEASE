@@ -5,6 +5,7 @@ import { getAllQuestions } from 'src/app/data/questions/get-data';
 import { HelperService } from 'src/app/services/helper.service';
 import { SelectTypeComponent } from 'src/app/select-type/select-type.component';
 import { LichsuthiComponent } from './lichsuthi/lichsuthi.component';
+import { MeothiComponent } from './meothi/meothi.component';
 
 @Component({
   selector: 'app-onthi',
@@ -56,6 +57,12 @@ export class OnthiPage implements OnInit {
   async presentLichSuThi() {
     const modal = await this.modalController.create({
       component: LichsuthiComponent
+    });
+    return await modal.present();
+  }
+  async presentMeoThi() {
+    const modal = await this.modalController.create({
+      component: MeothiComponent
     });
     return await modal.present();
   }

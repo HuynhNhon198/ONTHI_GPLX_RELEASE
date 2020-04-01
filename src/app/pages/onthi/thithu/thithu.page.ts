@@ -37,9 +37,7 @@ export class ThithuPage implements OnInit {
   }
 
   dismiss() {
-    this.modalCtrl.dismiss({
-      dismissed: true
-    });
+    this.modalCtrl.dismiss();
   }
 
 }

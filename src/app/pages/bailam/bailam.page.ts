@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { NavParams, ModalController, IonSlides, MenuController, AlertController } from '@ionic/angular';
+import { NavParams, ModalController, IonSlides, MenuController, AlertController, NavController } from '@ionic/angular';
 import { getQuestions } from 'src/app/data/questions/get-data';
 import { KetquathiComponent } from '../ketquathi/ketquathi.component';
 import { HelperService } from 'src/app/services/helper.service';
@@ -26,7 +26,7 @@ export class BailamPage implements OnInit {
   count = 0;
   questionInMenu = [];
 
-  constructor(private helper: HelperService, public modalCtrl: ModalController, navParams: NavParams, private menu: MenuController, public alertController: AlertController) {
+  constructor(public navCtrl: NavController, private helper: HelperService, public modalCtrl: ModalController, navParams: NavParams, private menu: MenuController, public alertController: AlertController) {
     navParams.get('idQuestion');
     navParams.get('time');
   }
@@ -171,7 +171,16 @@ export class BailamPage implements OnInit {
         // type: this.helper.type
       }
     });
-    return await modal.present();
+    await modal.present();
+
+    await modal.onDidDismiss();
+    this.helper.setColorStatusBar('#ffffff');
+    this.close();
+  }
+
+  async close() {
+    const modal = await this.modalCtrl.getTop();
+    this.modalCtrl.dismiss(modal.id);
   }
 
 }
