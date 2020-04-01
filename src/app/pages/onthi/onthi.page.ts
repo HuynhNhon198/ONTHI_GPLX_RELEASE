@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ThithuPage } from './thithu/thithu.page';
-import { getListQuestions, getAllQuestions } from 'src/app/data/questions/get-data';
+import { getAllQuestions } from 'src/app/data/questions/get-data';
 import { HelperService } from 'src/app/services/helper.service';
 import { SelectTypeComponent } from 'src/app/select-type/select-type.component';
+import { LichsuthiComponent } from './lichsuthi/lichsuthi.component';
 
 @Component({
   selector: 'app-onthi',
@@ -48,6 +49,13 @@ export class OnthiPage implements OnInit {
   async presentThiThu() {
     const modal = await this.modalController.create({
       component: ThithuPage
+    });
+    return await modal.present();
+  }
+
+  async presentLichSuThi() {
+    const modal = await this.modalController.create({
+      component: LichsuthiComponent
     });
     return await modal.present();
   }

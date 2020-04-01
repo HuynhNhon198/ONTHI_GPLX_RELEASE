@@ -58,7 +58,7 @@ export class KetquathiComponent implements OnInit {
       this.result = this.questions.filter((x, i) =>
         x.result === option
       );
-    } else { this.result = this.data.questions; }
+    } else { this.result = this.questions; }
     // console.log(this.result);
   }
 
