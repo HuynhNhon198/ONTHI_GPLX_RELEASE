@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NavParams, ModalController } from '@ionic/angular';
 import { HelperService } from 'src/app/services/helper.service';
-import { async } from '@angular/core/testing';
 import { Result } from '../bailam/bailam.page';
 import { getQuestions } from 'src/app/data/questions/get-data';
 import { Router } from '@angular/router';
+import { KetquathichitietComponent } from './ketquathichitiet/ketquathichitiet.component';
 
 @Component({
   selector: 'app-ketquathi',
@@ -47,7 +47,7 @@ export class KetquathiComponent implements OnInit {
   async getData() {
     const history = await this.helper.getStorage(`history-${this.helper.type}`);
     this.data = history.filter(x => x.id === this.idQuestion)[0];
-    console.log(this.data);
+    // console.log(this.data);
     this.nPass = this.data.questions.filter(
       x => x.result === Result.Dung
     ).length;
@@ -61,6 +61,7 @@ export class KetquathiComponent implements OnInit {
         y.checked = this.data.questions[i].answers[j];
       });
       x.result = this.data.questions[i].result;
+      x.totalQuestions = this.questions.length;
     });
     this.result = this.questions;
     // console.log(this.questions);
@@ -73,7 +74,16 @@ export class KetquathiComponent implements OnInit {
     } else {
       this.result = this.questions;
     }
-    // console.log(this.result);
+  }
+
+  async presentKetQuaThiChiTiet(question) {
+    const modal = await this.modalCtrl.create({
+      component: KetquathichitietComponent,
+      componentProps: {
+        question
+      }
+    });
+    await modal.present();
   }
 
   close() {

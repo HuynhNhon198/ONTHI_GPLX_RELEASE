@@ -35,7 +35,6 @@ export class LichsuthiComponent implements OnInit {
 
   async getData() {
     this.listQuestions = await this.helper.getStorage(`history-${this.helper.type}`);
-    console.log(this.listQuestions);
     this.listQuestions.forEach(question => {
       question.nPass = question.questions.filter(x => x.result === 1).length;
       question.nFail = question.questions.filter(x => x.result === 2).length;
@@ -53,8 +52,6 @@ export class LichsuthiComponent implements OnInit {
       component: KetquathiComponent,
       componentProps: {
         idQuestion
-        // time,
-        // type: this.helper.type
       }
     });
     await modal.present();

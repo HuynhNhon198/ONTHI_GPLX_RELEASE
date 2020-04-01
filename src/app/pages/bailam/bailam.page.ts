@@ -181,8 +181,6 @@ export class BailamPage implements OnInit {
       component: KetquathiComponent,
       componentProps: {
         idQuestion: this.idQuestion,
-        // time,
-        // type: this.helper.type
       }
     });
     await modal.present();
