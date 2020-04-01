@@ -22,7 +22,7 @@ export class MeothiComponent implements OnInit {
     this.helper.setColorStatusBar('#3171e0', true);
     this.data = getTips(this.helper.type);
     this.renderData = this.data.find( x => x.type === 'lythuyet').tips;
-    console.log(this.renderData);
+    // console.log(this.renderData);
   }
   dismiss() {
     this.helper.setColorStatusBar('#ffffff');
@@ -31,7 +31,7 @@ export class MeothiComponent implements OnInit {
 
   segmentChanged(v) {
     this.renderData = this.data.find( x => x.type === v).tips || [];
-    console.log(this.renderData);
+    // console.log(this.renderData);
   }
 
 
