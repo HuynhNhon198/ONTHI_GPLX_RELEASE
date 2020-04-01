@@ -20,30 +20,79 @@ export class BailamPage implements OnInit {
   @Input() idQuestion: string;
   @Input() time: number;
   @Input() type: string;
+  @Input() xemCauSai: boolean;
   @ViewChild('slide', { static: false }) slide: IonSlides;
   questions: any;
   timeView = '00:00';
   count = 0;
   questionInMenu = [];
+  num: number;
+  index: number;
 
   constructor(public navCtrl: NavController, private helper: HelperService, public modalCtrl: ModalController, navParams: NavParams, private menu: MenuController, public alertController: AlertController) {
     navParams.get('idQuestion');
     navParams.get('time');
+    navParams.get('xemCauSai');
   }
 
   ngOnInit() {
     this.helper.setColorStatusBar('#3171e0', true);
   }
 
-  ionViewDidEnter() {
-    this.questions = getQuestions(this.type, this.idQuestion);
-    this.countDown();
+  async ionViewDidEnter() {
+    if (this.xemCauSai) {
+      const questions = [];
+      const history = await this.helper.getStorage(`history-${this.helper.type}`);
+      history.forEach(h => {
+        const question = getQuestions(this.helper.type, h.id);
+        h.questions.forEach((q, i) => {
+          if (q.result === 2) {
+            questions.push(question.questions[i]);
+          }
+        });
+      });
+      this.questions = questions;
+    } else {
+      const questions = getQuestions(this.type, this.idQuestion);
+      this.num = questions.num;
+      this.questions = questions.questions;
+      this.countDown();
+    }
+  }
+
+  async checkAnswers() {
+    this.index = await this.slide.getActiveIndex();
+    const corrects = this.questions[this.index].answers.filter(x => x.correct).length;
+    const checkeds = this.questions[this.index].answers.filter(x => x.correct && x.checked === x.correct).length;
+    const sl = this.questions[this.index].answers.filter(x => x.checked).length;
+    if (corrects === checkeds && checkeds === sl) {
+      this.questions[this.index].result = Result.Dung;
+    } else {
+      if (sl !== 0) {
+        this.questions[this.index].result = Result.Sai;
+      } else {
+        this.questions[this.index].result = Result.ChuaLam;
+      }
+    }
+  }
+
+  getAnswersOfType(type: number) {
+    return this.questions[this.index].answers.map((x, i) => {
+      if (type === 1) {
+        if (x.correct === true) { return i + 1; }
+      } else {
+        if (x.checked === true) { return i + 1; }
+      }
+    }).filter(x => x !== undefined);
   }
 
   async submit() {
+    const cauchualam = this.questions.length - this.questions.filter(x =>
+      x.answers.find(y => y.checked)
+    ).length;
     const alert = await this.alertController.create({
       header: 'NỘP BÀI THI NGAY?',
-      message: 'Chỗ này để hỏi gì đó tí nữa sửa',
+      message: cauchualam === 0 ? 'Nộp bài thi ngay và chấm điểm' : `Bạn còn ${cauchualam} câu chưa trả lời. Bạn có chăc chắn muốn nộp bài ngay?`,
       buttons: [
         {
           text: 'Không',
@@ -75,7 +124,7 @@ export class BailamPage implements OnInit {
       id: String
     };
     let socaudung = 0;
-    result.questions = this.questions.questions.map(question => {
+    result.questions = this.questions.map(question => {
       const corrects = question.answers.filter(x => x.correct).length;
       const checkeds = question.answers.filter(x => x.correct && x.checked === x.correct).length;
       const sl = question.answers.filter(x => x.checked).length;
@@ -100,7 +149,7 @@ export class BailamPage implements OnInit {
     if (socaudung >= 16) { result.pass = true; } else { result.pass = false; }
     result.ctime = this.helper.create_milisec('');
     result.id = this.idQuestion;
-    result.num = this.questions.num;
+    result.num = this.num;
 
     history = await this.helper.getStorage(`history-${this.helper.type}`);
     if (!history) {
@@ -130,7 +179,7 @@ export class BailamPage implements OnInit {
   }
 
   openMenu() {
-    this.questionInMenu = this.questions.questions.map(x => {
+    this.questionInMenu = this.questions.map(x => {
       return {
         q: x.question,
         checked: x.answers.find(y => y.checked) ? 'ĐÃ LÀM' : 'CHƯA LÀM'
@@ -154,26 +203,30 @@ export class BailamPage implements OnInit {
   }
 
   async dismiss() {
-    const alert = await this.alertController.create({
-      header: 'THOÁT BÀI THI?',
-      message: 'Dữ liệu bài thi đang làm sẽ không được lưu lại, bạn có chắc chắn muốn thoát?',
-      buttons: [
-        {
-          text: 'Không',
-          // role: 'cancel',
-        }, {
-          text: 'Có',
-          handler: () => {
-            this.helper.setColorStatusBar('#ffffff');
-            this.modalCtrl.dismiss({
-              dismissed: true
-            });
+    if (this.xemCauSai) {
+      this.modalCtrl.dismiss();
+    } else {
+      const alert = await this.alertController.create({
+        header: 'THOÁT BÀI THI?',
+        message: 'Dữ liệu bài thi đang làm sẽ không được lưu lại, bạn có chắc chắn muốn thoát?',
+        buttons: [
+          {
+            text: 'Không',
+            // role: 'cancel',
+          }, {
+            text: 'Có',
+            handler: () => {
+              this.helper.setColorStatusBar('#ffffff');
+              this.modalCtrl.dismiss({
+                dismissed: true
+              });
+            }
           }
-        }
-      ]
-    });
+        ]
+      });
 
-    await alert.present();
+      await alert.present();
+    }
   }
 
   async presentKetQuaThi() {

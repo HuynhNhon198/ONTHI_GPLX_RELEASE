@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { HelperService } from 'src/app/services/helper.service';
-import { getTipA1 } from 'src/app/data/questions/a1';
 import { getTips } from 'src/app/data/questions/get-data';
 
 @Component({
@@ -21,7 +20,7 @@ export class MeothiComponent implements OnInit {
   ngOnInit() {
     this.helper.setColorStatusBar('#3171e0', true);
     this.data = getTips(this.helper.type);
-    this.renderData = this.data.find( x => x.type === 'lythuyet').tips;
+    this.renderData = this.data.find(x => x.type === 'lythuyet').tips;
     // console.log(this.renderData);
   }
   dismiss() {
@@ -30,7 +29,7 @@ export class MeothiComponent implements OnInit {
   }
 
   segmentChanged(v) {
-    this.renderData = this.data.find( x => x.type === v).tips || [];
+    this.renderData = this.data.find(x => x.type === v).tips || [];
     // console.log(this.renderData);
   }
 

@@ -1,5 +1,5 @@
 <div *ngIf="questions">
-  <ion-menu side="end"  menuId="chonCauHoi" contentId="main">
+  <ion-menu side="end" menuId="chonCauHoi" contentId="main">
     <ion-header>
       <ion-toolbar color="primary">
         <ion-title>Danh Mục Câu Hỏi</ion-title>
@@ -7,18 +7,20 @@
     </ion-header>
     <ion-content>
       <ion-list>
-        <ion-item  *ngFor="let question of questionInMenu; let i= index" (click)="slideTo(i)">
+        <ion-item *ngFor="let question of questionInMenu; let i= index" (click)="slideTo(i)">
           <ion-label>
             <h3 style="font-size: 18px;
-            font-weight: 500;">Câu số {{i+1}} <span class="status" [ngStyle]='{"background": question.checked === "ĐÃ LÀM"? "#3880ff": "#dc4545"}'>{{question.checked}}</span></h3>
+            font-weight: 500;">Câu số {{i+1}} <span class="status"
+                [ngStyle]='{"background": question.checked === "ĐÃ LÀM"? "#3880ff": "#dc4545"}'>{{question.checked}}</span>
+            </h3>
             <p style="font-size: 12px;color: #666666">{{question.q}}</p>
           </ion-label>
         </ion-item>
       </ion-list>
     </ion-content>
   </ion-menu>
-  
-  <div >
+
+  <div>
     <ion-header>
       <ion-toolbar color="primary">
         <ion-buttons slot="start">
@@ -27,6 +29,7 @@
           </ion-button>
         </ion-buttons>
         <ion-title *ngIf="timeView!=='00:00'">{{timeView}}</ion-title>
+        <ion-title *ngIf="xemCauSai">CÂU ĐÃ LÀM SAI</ion-title>
         <ion-buttons slot="end">
           <span></span>
           <ion-button (click)="openMenu()">
@@ -35,13 +38,13 @@
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
-  
+
     <ion-content id="main" fullscreen class="ion-padding">
       <ion-slides #slide>
-  
-        <ion-slide *ngFor="let question of questions.questions; let i= index">
+
+        <ion-slide *ngFor="let question of questions; let i= index">
           <div class="slide">
-            <h4>Câu {{i+1}}/{{questions.questions.length}}</h4>
+            <h4>Câu {{i+1}}/{{questions.length}}</h4>
             <ion-text color="dark">
               <h5>{{question.question}}</h5>
             </ion-text>
@@ -49,14 +52,49 @@
             <ion-list>
               <ion-item text-wrap lines="none" *ngFor="let answer of question.answers">
                 <p>{{answer.answer}}</p>
-                <ion-checkbox color="primary" slot="start" [(ngModel)]="answer.checked"></ion-checkbox>
+                <ion-checkbox disabled="{{(!question.result || question.result===3)? false: true}}" color="primary" slot="start" [(ngModel)]="answer.checked"></ion-checkbox>
               </ion-item>
             </ion-list>
+
+            <ion-item>
+              <ion-label>
+
+                <div *ngIf="question.result === 1">
+                  <h3>Đúng</h3>
+                  <div>
+                    <span>Đáp án đúng:</span><span *ngFor="let x of getAnswersOfType(1)">{{x}} </span>
+                  </div>
+                  <div>
+                    <span>Đáp án bạn chọn:</span><span *ngFor="let x of getAnswersOfType(2)">{{x}} </span>
+                  </div>
+                  <ion-icon name="checkmark-outline" slot="start"></ion-icon>
+                </div>
+
+                <div *ngIf="question.result === 2">
+                  <h3>Sai</h3>
+                  <div>
+                    <span>Đáp án đúng:</span>
+                    <span *ngFor="let x of getAnswersOfType(1)">{{x}} </span>
+                  </div>
+                  <div>
+                    <span>Đáp án bạn chọn:</span>
+                    <span *ngFor="let x of getAnswersOfType(2)">{{x}} </span>
+                  </div>
+                  <ion-icon name="close-outline" slot="start"></ion-icon>
+                </div>
+
+                <div *ngIf="question.result === 3">
+                  <h3>Bạn chưa chọn đáp án</h3>
+                  <ion-icon name="alert-outline" slot="start"></ion-icon>
+                </div>
+              </ion-label>
+            </ion-item>
+
           </div>
         </ion-slide>
       </ion-slides>
     </ion-content>
-  
+
   </div>
 
 </div>
@@ -68,7 +106,10 @@
         <ion-icon slot="icon-only" name="chevron-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title (click)="submit()">NỘP BÀI</ion-title>
+    <ion-title *ngIf="xemCauSai; else nopbai" (click)="checkAnswers()">XEM ĐÁP ÁN</ion-title>
+    <ng-template #nopbai>
+      <ion-title (click)="submit()">NỘP BÀI</ion-title>
+    </ng-template>
     <ion-buttons slot="end">
       <ion-button (click)="slide.slideNext()">
         <ion-icon slot="icon-only" name="chevron-forward"></ion-icon>

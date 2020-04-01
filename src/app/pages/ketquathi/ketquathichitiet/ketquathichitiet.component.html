@@ -12,7 +12,7 @@
   <ion-item>
     <ion-label>
 
-      <div *ngIf="question.result === 1; else chualam">
+      <div *ngIf="question.result === 1">
         <h3>Đúng</h3>
         <div>
           <span>Đáp án đúng:</span><span *ngFor="let x of getAnswersOfType(1)">{{x}} </span>
@@ -23,7 +23,7 @@
         <ion-icon name="checkmark-outline" slot="start"></ion-icon>
       </div>
 
-      <div *ngIf="question.result === 2; else chualam">
+      <div *ngIf="question.result === 2">
         <h3>Sai</h3>
         <div>
           <span>Đáp án đúng:</span><span *ngFor="let x of getAnswersOfType(1)">{{x}} </span>
@@ -34,7 +34,7 @@
         <ion-icon name="close-outline" slot="start"></ion-icon>
       </div>
 
-      <div *ngIf="question.result === 3; else chualam">
+      <div *ngIf="question.result === 3">
         <h3>Bạn chưa chọn đáp án</h3>
         <ion-icon name="alert-outline" slot="start"></ion-icon>
       </div>
