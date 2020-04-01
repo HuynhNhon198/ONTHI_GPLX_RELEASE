@@ -4,6 +4,7 @@ import { ThithuPage } from './thithu/thithu.page';
 import { getListQuestions, getAllQuestions } from 'src/app/data/questions/get-data';
 import { HelperService } from 'src/app/services/helper.service';
 import { SelectTypeComponent } from 'src/app/select-type/select-type.component';
+import { MeothiComponent } from './meothi/meothi.component';
 
 @Component({
   selector: 'app-onthi',
@@ -48,6 +49,13 @@ export class OnthiPage implements OnInit {
   async presentThiThu() {
     const modal = await this.modalController.create({
       component: ThithuPage
+    });
+    return await modal.present();
+  }
+
+  async presentMeoThi() {
+    const modal = await this.modalController.create({
+      component: MeothiComponent
     });
     return await modal.present();
   }

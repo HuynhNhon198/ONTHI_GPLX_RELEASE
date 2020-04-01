@@ -15,6 +15,7 @@ import { BailamPage } from './pages/bailam/bailam.page';
 import { FormsModule } from '@angular/forms';
 import { SelectTypeComponent } from './select-type/select-type.component';
 import { KetquathiComponent } from './pages/ketquathi/ketquathi.component';
+import { MeothiComponent } from './pages/onthi/meothi/meothi.component';
 
 
 @NgModule({
@@ -23,13 +24,15 @@ import { KetquathiComponent } from './pages/ketquathi/ketquathi.component';
     ThithuPage,
     BailamPage,
     KetquathiComponent,
-    SelectTypeComponent
+    SelectTypeComponent,
+    MeothiComponent
   ],
   entryComponents: [
     ThithuPage,
     BailamPage,
     KetquathiComponent,
-    SelectTypeComponent
+    SelectTypeComponent,
+    MeothiComponent
   ],
   imports: [
     BrowserModule,
