@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { HelperService } from 'src/app/services/helper.service';
 import { getListQuestions } from 'src/app/data/questions/get-data';
+import { KetquathiComponent } from '../../ketquathi/ketquathi.component';
 
 @Component({
   selector: 'app-lichsuthi',
@@ -12,19 +13,16 @@ export class LichsuthiComponent implements OnInit {
 
   listQuestions: {
     num: any;
-    time: any;
-    id: any;
-    q_length: any;
-    data: {
-      questions: [{
-        answers: [],
-        result: number
-      }
-      ],
-      pass: boolean,
-      ctime: number,
-      id: string
+    questions: [{
+      answers: [],
+      result: number
     }
+    ],
+    nPass: number,
+    nFail: number,
+    pass: boolean,
+    ctime: number,
+    id: string
   }[];
 
   constructor(public modalCtrl: ModalController, private helper: HelperService) { }
@@ -35,21 +33,31 @@ export class LichsuthiComponent implements OnInit {
     this.getData();
   }
 
-  getData() {
-    const arr = getListQuestions(this.helper.type).map(async (question: any) => {
-      const data = await this.helper.getStorage(question.id);
-      if (data) {
-        question.data = data;
-        return question;
-      }
-    });
+  async getData() {
+    this.listQuestions = await this.helper.getStorage(`history-${this.helper.type}`);
     console.log(this.listQuestions);
+    this.listQuestions.forEach(question => {
+      question.nPass = question.questions.filter(x => x.result === 1).length;
+      question.nFail = question.questions.filter(x => x.result === 2).length;
+    });
   }
 
   dismiss() {
     this.modalCtrl.dismiss({
       dismissed: true
     });
+  }
+
+  async presentKetQuaThi(idQuestion: string) {
+    const modal = await this.modalCtrl.create({
+      component: KetquathiComponent,
+      componentProps: {
+        idQuestion
+        // time,
+        // type: this.helper.type
+      }
+    });
+    await modal.present();
   }
 
 }
