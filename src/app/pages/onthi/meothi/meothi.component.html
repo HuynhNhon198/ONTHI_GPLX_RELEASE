@@ -5,17 +5,32 @@
         <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>MEO THI</ion-title>
+    <ion-title>MẸO THI</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+ <ion-row class="segment">
   <ion-segment (ionChange)="segmentChanged($event.target.value)" value="lythuyet">
     <ion-segment-button value="lythuyet">
       <ion-label>Lý Thuyết</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="enemies">
-      <ion-label>Enemies</ion-label>
+    <ion-segment-button value="sahinh">
+      <ion-label>Sa Hình</ion-label>
     </ion-segment-button>
   </ion-segment>
+ </ion-row>
+  <div class="content">
+    <ion-row *ngFor="let item of renderData; let ind = index">
+      <h3 style="padding-top: 0; border-top: none;">
+        {{ind+1}}. {{item.title}}
+      </h3>
+      <p>
+        <ng-container *ngFor="let i of item.tips"r>
+          {{i}} <br>
+        </ng-container>
+      </p>
+    </ion-row>
+
+  </div>
 </ion-content>

@@ -2978,3 +2978,111 @@ export function getA1() {
         }
     ];
 }
+
+export function getTipA1() {
+    return [
+        {
+            type: 'lythuyet',
+            tips: [
+                {
+                    title: 'Câu hỏi liên quan đến KHÁI NIỆM :',
+                    tips: [`Những câu hỏi về “khái niệm” hoặc “ hiểu như thế nào là đúng” thì có các từ trong ngoặc kép “…” ở đề bài thì để ý những từ sau:
+
+                  `, `+ Vạch – Phố – Dải – Phần : Chọn đáp án (1).
+                    (Vạch trong “Vạch kẻ đường” , Phố trong “Đường phố” , Dải trong “Dải phân cách”, Phần trong “Phần đường xe chạy” )
+                  `, `+ Làn – Tiên – Giới : Chọn đáp án (2).
+                    (Làn trong “Làn đường” , Tiên trong ” Đường ưu tiên” , Giới trong “Phương tiện giao thông cơ giới” )
+                  `, `+ Khái niệm “ đường bộ”, “văn hóa giao thông” : Chọn đáp án (1) + (2).
+                  `, `+ Khái niệm “Người điều khiển giao thông” : Chọn đáp án (2) + (3).`]
+                },
+                {
+                    title: 'Những câu luôn nằm trong ĐÁP ÁN ĐÚNG:',
+                    tips: [`Trong đáp án chứa những cụm từ sau , thì chọn luôn đáp án đó:
+
+                  `, `+ Bị nghiêm cấm.
+                  `, `+ Không được……. (không được phép, không được quay đầu).
+                  `, `+ UBND cấp tỉnh.
+                  `, `+ Cơ quan, tổ chức, cá nhân.`]
+                },
+                {
+                    title: 'Câu hỏi về NỒNG ĐỘ CỒN:',
+                    tips: [`Những câu hỏi về NỒNG ĐỘ CỒN, mà đề bài nhắc đến:
+
+                  `, `+ Mô tô : thì chọn đáp án (1).
+                  `, `+ Ô tô : thì chọn đáp án (2).`]
+                },
+                {
+                    title: 'Câu hỏi về HÀNH VI:',
+                    tips: [`Những câu hỏi về HÀNH VI mà:
+
+                  `, `+ Có 2 đáp án: Chọn cả (1) và (2).
+                  `, `+ Có 4 đáp án: Đọc hiểu.`]
+                },
+                {
+                    title: 'Câu hỏi về HIỆU LỆNH CSGT:',
+                    tips: [`Khi câu hỏi có nhắc đến HIỆU LỆNH của người điều khiển giao thông:
+
+                  `, `+ Giơ: chọn đáp án (2).
+                  `, `+ Giang: chọn đáp án (1).`]
+                },
+                {
+                    title: 'Câu hỏi về VÒNG XUYẾN :',
+                    tips: [`+ Có báo hiệu đi theo vòng xuyến >>nhường bên tay TRÁI
+
+                  `, `+ Không có báo hiệu đi theo vòng xuyến >> nhường bên tay PHẢI`]
+                },
+                {
+                    title: 'Câu hỏi về ĐƯỜNG CAO TỐC:',
+                    tips: [`+ Vào đường cao tốc : Chọn đáp án (1) + (3).
+
+                  `, `+ Ra đường cao tốc : Chọn đáp án (1).`]
+                },
+                {
+                    title: 'Câu hỏi về ĐÔNG DÂN CƯ:',
+                    tips: [`+  Đề bài không có số: chọn đáp án (2)
+
+                  `, `+ Đề bài có số: chọn đáp án có từ “xe gắn máy” ở cuối đáp án.`]
+                }
+            ]
+        },
+        {
+            type: 'sahinh',
+            tips: [
+                {
+                    title: ' Thứ tự đi phần sa hình:',
+                    tips: [`Thứ 1: Xe nào vào nơi giao nhau đi trước.`, `
+
+                    Thứ 2: Xe ưu tiên đi trước: Quân sự, công an, cứu thương…`, `
+
+                    Thứ 3: Xe nào đi trên đường ưu tiên thì được đi trước.`, `
+
+                    Thứ 4: Xe bên phải không vướng đi trước.`, `
+
+                    Thứ 5: Rẽ phải – Đi thẳng – Rẽ trái.`]
+                },
+                {
+                    title: ' XE CON LUÔN ĐÚNG: tức là xe con là từ khóa, xe con luôn chấp hành đúng quy tắc giao thông.',
+                    tips: [`+ Khi đề bài hỏi xe nào được quyền đi trước, xe nào chấp hành đúng luật giao thông =>>> Chọn đáp án có xe con.
+
+                  `, `+ Khi đề bài hỏi xe nào vi phạm quy tắc giao thông =>> Chọn đáp án không có xe con (Vì xe con luôn đúng).`]
+                },
+                {
+                    title: 'Có hình CSGT hoặc VÒNG TRÒN hoặc VÒNG XUYẾN: Chọn đáp án số 3.',
+                    tips: [ `Trong phần sa hình, câu nào xuất hiện hình CSGT hoặc VÒNG TRÒN, hoặc VÒNG XUYẾN thì chọn luôn đáp án số 3.`]
+                },
+                {
+                    title: ' ĐẾM SỐ XE :',
+                    tips: [`Trong phần sa hình , trong hình chỉ có mỗi xe không, không có biển , không có đèn gì cả, thì ĐẾM SỐ XE CHỌN ĐÁP ÁN: Có 3 xe chọn đáp án 3, 4 xe chọn đáp án 4.`]
+                },
+                {
+                    title: 'Có mũi tên màu đỏ: đếm ngã – 1 =>> ra đáp án',
+                    tips: [`Có 3 ngã thì đáp án 2, có 4 ngã thì đáp án 3.`]
+                },
+                {
+                    title: 'Có chữ Xe con (E) và “Xe xích lô” : chọn đáp án đúng luôn.',
+                    tips: []
+                }
+            ]
+        }
+    ];
+}
