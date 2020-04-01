@@ -26,7 +26,7 @@ export class LichsuthiComponent implements OnInit {
 
   constructor(public modalCtrl: ModalController, private helper: HelperService) { }
 
-  ngOnInit() { 
+  ngOnInit() {
     this.helper.setColorStatusBar('#3171e0', true);
   }
 
