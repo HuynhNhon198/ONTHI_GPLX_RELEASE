@@ -17,6 +17,7 @@ import { SelectTypeComponent } from './select-type/select-type.component';
 import { KetquathiComponent } from './pages/ketquathi/ketquathi.component';
 import { LichsuthiComponent } from './pages/onthi/lichsuthi/lichsuthi.component';
 import { MeothiComponent } from './pages/onthi/meothi/meothi.component';
+import { KetquathichitietComponent } from './pages/ketquathi/ketquathichitiet/ketquathichitiet.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { MeothiComponent } from './pages/onthi/meothi/meothi.component';
     KetquathiComponent,
     LichsuthiComponent,
     SelectTypeComponent,
+    KetquathichitietComponent,
     MeothiComponent
   ],
   entryComponents: [
@@ -35,6 +37,7 @@ import { MeothiComponent } from './pages/onthi/meothi/meothi.component';
     KetquathiComponent,
     LichsuthiComponent,
     SelectTypeComponent,
+    KetquathichitietComponent,
     MeothiComponent
   ],
   imports: [

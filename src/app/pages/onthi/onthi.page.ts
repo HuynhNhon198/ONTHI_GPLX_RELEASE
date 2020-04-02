@@ -6,6 +6,7 @@ import { HelperService } from 'src/app/services/helper.service';
 import { SelectTypeComponent } from 'src/app/select-type/select-type.component';
 import { LichsuthiComponent } from './lichsuthi/lichsuthi.component';
 import { MeothiComponent } from './meothi/meothi.component';
+import { BailamPage } from '../bailam/bailam.page';
 
 @Component({
   selector: 'app-onthi',
@@ -66,6 +67,17 @@ export class OnthiPage implements OnInit {
     });
     return await modal.present();
   }
+
+  async presentXemCauSai() {
+    const modal = await this.modalController.create({
+      component: BailamPage,
+      componentProps: {
+        xemCauSai: true
+      }
+    });
+    return await modal.present();
+  }
+
 
   renderData(type: string) {
     // console.log(getListQuestions(type));

@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>KẾT QUẢ THI</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content *ngIf="question">
+  <ion-item>
+    <ion-label>
+
+      <div *ngIf="question.result === 1">
+        <h3>Đúng</h3>
+        <div>
+          <span>Đáp án đúng:</span><span *ngFor="let x of getAnswersOfType(1)">{{x}} </span>
+        </div>
+        <div>
+          <span>Đáp án bạn chọn:</span><span *ngFor="let x of getAnswersOfType(2)">{{x}} </span>
+        </div>
+        <ion-icon name="checkmark-outline" slot="start"></ion-icon>
+      </div>
+
+      <div *ngIf="question.result === 2">
+        <h3>Sai</h3>
+        <div>
+          <span>Đáp án đúng:</span><span *ngFor="let x of getAnswersOfType(1)">{{x}} </span>
+        </div>
+        <div>
+          <span>Đáp án bạn chọn:</span><span *ngFor="let x of getAnswersOfType(2)">{{x}} </span>
+        </div>
+        <ion-icon name="close-outline" slot="start"></ion-icon>
+      </div>
+
+      <div *ngIf="question.result === 3">
+        <h3>Bạn chưa chọn đáp án</h3>
+        <ion-icon name="alert-outline" slot="start"></ion-icon>
+      </div>
+
+    </ion-label>
+  </ion-item>
+  <h4>Câu {{question.num}}/{{question.totalQuestions}}</h4>
+  <ion-text color="dark">
+    <h5>{{question.question}}</h5>
+  </ion-text>
+  <img *ngIf="question.img" src="{{question.img}}" />
+  <ion-list>
+    <ion-item text-wrap lines="none" *ngFor="let answer of question.answers">
+      <p>{{answer.answer}}</p>
+      <ion-checkbox color="primary" slot="start" [checked]="answer.checked? answer.checked: false"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { HelperService } from 'src/app/services/helper.service';
-import { getListQuestions } from 'src/app/data/questions/get-data';
 import { KetquathiComponent } from '../../ketquathi/ketquathi.component';
-import { ThithuPage } from '../thithu/thithu.page';
 
 @Component({
   selector: 'app-lichsuthi',
@@ -58,8 +56,6 @@ export class LichsuthiComponent implements OnInit {
       component: KetquathiComponent,
       componentProps: {
         idQuestion
-        // time,
-        // type: this.helper.type
       }
     });
     await modal.present();

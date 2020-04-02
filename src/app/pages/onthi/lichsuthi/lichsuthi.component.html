@@ -11,7 +11,7 @@
 
 <ion-content *ngIf="listQuestions">
   <!-- <ion-list> -->
-    <ion-item lines='none' *ngFor="let question of listQuestions" [ngClass]="question.pass? 'pass': 'fail'">
+    <ion-item lines='none' *ngFor="let question of listQuestions" [ngClass]="question.pass? 'pass': 'fail'"  (click)="presentKetQuaThi(question.id)">
       <ion-avatar slot="start">
         <img [src]="question.pass? 'assets/tick.png':'assets/fail.png'">
       </ion-avatar>

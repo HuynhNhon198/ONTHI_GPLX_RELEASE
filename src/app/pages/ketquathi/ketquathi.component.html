@@ -34,7 +34,7 @@
   </ion-row>
   <ion-list *ngIf="result">
     <ion-item *ngFor="let item of result;">
-      <ion-label>
+      <ion-label (click)="presentKetQuaThiChiTiet(item)">
         <h3>Câu số {{item.num}}</h3>
         <p>{{item.question}}</p>
       </ion-label>
