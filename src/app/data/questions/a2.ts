@@ -7354,3 +7354,106 @@ export function getA2() {
         }
     ];
 }
+
+export function getTipA2() {
+    return [
+        {
+            type: 'lythuyet',
+            tips: [
+                {
+                    title: 'Nếu từ đầu tiên của ý cuối cùng trong đáp án có các từ sau: tuyệt đối, tất cả, phải, cảnh, cả, người, các giấy thì đó là đáp án đúng.',
+                    tips: []
+                },
+                {
+                    title: 'Chọn ý 2 nếu đáp án có chữ “khái niệm”.',
+                    tips: []
+                },
+                {
+                    title: 'Chọn ý 1 nếu đáp án có chữ “đường cao tốc',
+                    tips: []
+                },
+                {
+                    title: 'Chọn ý 3 nếu đáp án có 3 từ: khi, nhường, xe',
+                    tips: []
+                },
+                {
+                    title: 'Chọn ý 1 nếu đáp án có 2 từ “phải”, 2 từ “không”, 3 từ “hiệu”.',
+                    tips: []
+                },
+                {
+                    title: 'Chọn 1 nếu đáp án có chữ “mét”',
+                    tips: []
+                },
+                {
+                    title: 'Có từ “Thở” chọn đáp án 1, từ “Máu” chọn đáp án  2.',
+                    tips: []
+                },
+                {
+                    title: 'Chọn ý 4 nếu đáp án có từ “giấy tờ”',
+                    tips: []
+                },
+                {
+                    title: 'Nếu đáp án có từ “không” ở đầu ý nào, chọn đáp án đó là ý đúng',
+                    tips: []
+                },
+                {
+                    title: 'Chọn đáp án 2 nếu có từ “tuổi”, 3 từ “đi’, 2 từ “đường”, 2 từ “biển”',
+                    tips: []
+                },
+                {
+                    title: 'Có từ “Gì” chọn đáp án  1, có từ “đi” chọn đáp án 2',
+                    tips: []
+                }
+            ]
+        },
+        {
+            type: 'sahinh',
+            tips: [
+                {
+                    title: 'Trong câu hỏi màu xanh, nếu có từ xe “mô tô” thì chọn đáp án 3, “công nông” thì chọn đáp án 4.',
+                    tips: []
+                },
+                {
+                    title: 'Ở đuôi câu hỏi màu xanh, nếu có “50km” thì chọn đáp án 3, “60km” thì chọn đáp án 4.',
+                    tips: []
+                },
+                {
+                    title: 'Mô tô thì: 40 km/h',
+                    tips: []
+                },
+                {
+                    title: 'Máy kéo thì : 30 km/h',
+                    tips: []
+                },
+                {
+                    title: 'Cao tốc thì 1, làn đường thì 2.',
+                    tips: []
+                },
+                {
+                    title: 'Mẹo thi lý thuyết bằng lái xe A2 cho phần giải sa hình thi: (thứ tự ưu tiên giảm dần trừ trên xuống nhé!)',
+                    tips: []
+                },
+                {
+                    title: 'Xe nào đã vào ưu tiên thì xe đó sẽ có quyền ưu tiên đi trước nhất',
+                    tips: []
+                },
+                {
+                    title: 'Tiếp theo sau sẽ đến xe ưu tiên (thứ tự xe ưu tiên sẽ là: cứu hỏa, xe quân sự, xe công an, xe cứu thương)',
+                    tips: []
+                },
+                {
+                    title: 'Nếu cùng là loại xe ưu tiên hoặc cùng là loại xe không ưu tiên thì hãy xem xét về đường ưu tiên, theo đó nếu xe nào nằm trên đường ưu tiên thì sẽ được quyền đi trước.',
+                    tips: []
+                },
+                {
+                    title: 'Nếu Xe nào không vướng xe khác ở phía bên phải thì có quyền đi trước, nhưng nếu trong phạm vi vòng xuyến thì phải nhường quyền ưu tiên cho xe phía bên trái',
+                    tips: []
+                },
+                {
+                    title: 'Thứ tự ưu tiên tiếp theo sẽ là: xe rẽ phải, xe đi thẳng, xe rẽ trái.',
+                    tips: []
+                }
+            ]
+        }
+    ];
+}

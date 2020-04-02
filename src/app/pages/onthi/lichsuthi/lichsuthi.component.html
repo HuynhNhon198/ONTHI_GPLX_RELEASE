@@ -9,7 +9,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="listQuestions;else noty">
+<ion-content *ngIf="listQuestions">
   <!-- <ion-list> -->
     <ion-item lines='none' *ngFor="let question of listQuestions" [ngClass]="question.pass? 'pass': 'fail'">
       <ion-avatar slot="start">
@@ -55,7 +55,7 @@
   </ion-item-group> -->
 </ion-content>
 
-<ng-template #noty>
+<ng-template *ngIf="listQuestions === null">
   <ion-content class="noty">
     <img src="assets/null.png" width="30%" alt="" srcset="">
     <br>

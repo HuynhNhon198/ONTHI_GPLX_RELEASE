@@ -20,16 +20,16 @@
   <ion-row class="resul-type">
     <ion-col [ngClass]="{'highlight': r == 0}" sizes (click)="getResult(0)" style="border-right: none;font-size: 18px;border-radius: 20px 0 0 20px;padding-top: 13px;">Tất cả</ion-col>
     <ion-col [ngClass]="{'highlight-1': r == 1}"  (click)="getResult(1)" style="border-right: none;">
-      <img src="assets/correct.png" width="16px" alt="">
       <span>{{nPass}}</span>
+      <img src="assets/correct.png" width="16px" alt="">
     </ion-col>
     <ion-col [ngClass]="{'highlight-2': r == 2}"  (click)="getResult(2)"  style="border-right: none;">
-      <img src="assets/cancel.png" width="16px" alt="">
       <span>{{nFail}}</span>
+      <img src="assets/cancel.png" width="16px" alt="">
     </ion-col>
     <ion-col [ngClass]="{'highlight-3': r == 3}"  (click)="getResult(3)" style="    border-radius: 0 20px 20px 0" >
-      <img src="assets/error.png" width="16px" alt="">
       <span>{{data.questions.length - nPass - nFail}}</span>
+      <img src="assets/error.png" width="16px" alt="">
     </ion-col>
   </ion-row>
   <ion-list *ngIf="result">

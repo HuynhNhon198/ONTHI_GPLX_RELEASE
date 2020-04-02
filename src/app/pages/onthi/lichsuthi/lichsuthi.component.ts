@@ -28,7 +28,7 @@ export class LichsuthiComponent implements OnInit {
 
   constructor(public modalCtrl: ModalController, private helper: HelperService) { }
 
-  ngOnInit() { 
+  ngOnInit() {
     this.helper.setColorStatusBar('#3171e0', true);
   }
 
@@ -38,8 +38,9 @@ export class LichsuthiComponent implements OnInit {
 
   async getData() {
     this.listQuestions = await this.helper.getStorage(`history-${this.helper.type}`);
-    console.log(this.listQuestions);
     if (this.listQuestions !== null) {
+      this.listQuestions = this.helper.sortArrObj(this.listQuestions, 'ctime', 'desc');
+      console.log(this.listQuestions);
       this.listQuestions.forEach(question => {
         question.nPass = question.questions.filter(x => x.result === 1).length;
         question.nFail = question.questions.filter(x => x.result === 2).length;

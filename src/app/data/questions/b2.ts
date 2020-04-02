@@ -12066,3 +12066,328 @@ export function getB2() {
         }
     ];
 }
+
+export function getTipB2() {
+    return [
+        {
+            type: 'lythuyet',
+            tips: [
+                {
+                    title: ' Chọn áp án có chứa các từ: ( thấy là chọn ngay không cần đọc câu hỏi – Áp dụng cho phần câu hỏi Lý Thuyết nhé)',
+                    tips: [
+                        'Nghiêm cấm hoặc bị nghiêm cấm',
+                        'Không được',
+                        'Chấp hành',
+                        'Bắt buộc',
+                        'Phải có phép của cơ quan có thẩm quyền                     ',
+                        'Về số thấp…., gài số 1',
+                        'Giảm tốc độ (nếu có 2 đáp án giảm tốc thì chọn đáp án có chữ lề bên phải)',
+                        'Dùng thanh nối cứng',
+                        'Báo hiệu tạm thời',
+                        'Hiệu lệnh người điều khiển giao thông',
+                        'Phương tiện giao thông đường sắt',
+                        'Xe chữa cháy đi làm nhiệm vụ',
+                        'Đèn chiếu xa sang gần'
+                      ]
+                },
+                {
+                    title: 'Các câu trả lời bắt đầu bằng những từ',
+                    tips: [
+                      '“Phải”, “Quan sát”, “Kiểm tra”, “Hoạt động”, “bảo dưỡng”, “ở”, “Tại”, “trên”, “xe chữa cháy” thì chọn đáp án dài nhất.'
+                    ]
+                  },
+                  {
+                    title: 'Lưu ý:',
+                    tips: [
+                      'Câu hỏi có 2 đáp án  (ngoại trừ bước 1 thì chọn cả 2 ý)',
+                      'Câu hỏi từ 3-4 đáp án -> đọc hiểu trả lời.'
+                    ]
+                  },
+                  {
+                    title: 'Các câu hỏi có từ sau đây thì chọn 2 đáp án: ( thường là câu hỏi chỉ có 2 đáp án và sẽ chọn cả 2!)',
+                    tips: [
+                      'Hành vi',
+                      'Trách nhiệm',
+                      'Nhiệm vụ',
+                      'Nghĩa vụ',
+                      'Khách',
+                      'Đạo đức',
+                      'Văn hóa giao thông',
+                      'Tư tưởng Hồ Chí Minh',
+                      'Tham gia giao thông'
+                    ]
+                  },
+                  {
+                    title: 'Mẹo bảng tốc độ xe: áp dụng nguyên tắc “8×7=56”',
+                    tips: [
+                      '40km &  80km: Chọn ý 1',
+                      '70km: Chọn ý 2',
+                      '50km: Chọn ý 3',
+                      '60km: Chọn ý 4',
+                      'Lưu ý: Khoảng cách an toàn trên đường cao tốc (số giữa dòng): lấy tốc độ lớn nhất trừ cho 30'
+                    ]
+                  },
+                  {
+                    title: 'Tốc độ xe trong và ngoài khu dân cư:',
+                    tips: [
+                      'Xe Moto: Xét qui tắc 2 – 4 – 6. ( 2 bánh , trong Khu Dân Cư 40km/h, ngoài KDC 60km/h).',
+                      'Xe gắn máy: Xét qui tắc  2 – 4 – 5 ( tương tự).',
+                      'Xe công nông:Qui tắc 30km kể cả trong và ngoài'
+                    ]
+                  },
+                  {
+                    title: ' Mẹo chọn nhanh: ( khi thấy các chữ này)',
+                    tips: [
+                      'Tăng số: chọn 1',
+                      'Giảm số: chọn 2',
+                      '“Giơ 2 tay : ý 1 (câu hỏi về cảnh sát giao thông giơ 1 tay hoặc 2 tay)',
+                      '“Giơ 1 tay” ý 2',
+                      'Sớm sang muộn : ý 1 ( trong 1 ngày)',
+                      'Muộn sang sớm: ý 2 (trong 2 ngày)',
+                      '“Dốc” chọn ý 1',
+                      '“ Dốc cao, dốc dài” chọn ý 2',
+                      'Động cơ Diesel: không dùng bugi (tia lửa điện)',
+                      'Thấy chữ “cơ quan”: ý 2',
+                      'FE: chọn đáp án 1',
+                      'FC: chọn đáp án 2',
+                      'Tuổi tối đa lái xe dấu E: 55 tuổi/ nam & 50 tuổi/nữ',
+                      'Hỏi tuổi thi bằng lái thì chọn tuổi lớn nhất'
+                    ]
+                  },
+                  {
+                    title: 'Khi hỏi về: đáp án sẽ có chữ này',
+                    tips: [
+                      'Hộp số: đảm bảo chuyển động lùi',
+                      'Dây đai: hãm giữ chặt',
+                      'Kính chắn gió: an toàn',
+                      'Khắc phục Giclơ: bằng không khí nén',
+                      'Hành lý: 20 kg',
+                      'Cách đường ray gần nhất: 5 mét',
+                      'Có vòng xuyến nhường bên trái, không vòng xuyến: bên phải',
+                      'Động cơ chuyển từ trong ra ngoài',
+                      'Nhiệt năng biến thành cơ năng',
+                      'Cách 30m xi nhan rẽ trái/phải',
+                      'Đậu xe: cách 5 mét',
+                      'Biển và đèn có hiệu lực bên trái và sau lưng biển.',
+                      'Vận chuyển động vật sống: yêu cầu có áp tải để chăm sóc; kiểm dịch (tuân theo quy định vệ sinh phòng dịch và bảo vệ môi trường).'
+                    ]
+                  },
+                  {
+                    title: ' Câu hỏi về nồng độ cồn:',
+                    tips: [
+                      'Nồng độ cồn đối với ô tô, máy kéo: không được uống',
+                      'Đối với mô tô 2 bánh, xe gắn máy: chọn nồng độ cồn lớn nhất (0,25 hoặc 50)'
+                    ]
+                  },
+                  {
+                    title: 'Niên hạn sử dụng xe:',
+                    tips: [
+                      'Xe tải: 25 năm',
+                      'Xe chở người > 9 chỗ: 20 năm'
+                    ]
+                  },
+                  {
+                    title: 'Dung tích quy định:',
+                    tips: [
+                      'Xe gắn máy ≤ 50 cm2',
+                      'A1 ≤ 175 cm2',
+                      'A 2 ≥ 175 CM2',
+                      'E > 30 chỗ',
+                      'FE: E + kéo (ô tô chở khách nối toa)',
+                      'FC: C + kéo (ô tô đầu kéo, kéo sơ mi rờ mooc)'
+                    ]
+                  },
+                  {
+                    title: 'Các câu hỏi về kỹ thuật máy thiết bị, Công dụng : chọn 1 đáp án',
+                    tips: [
+                      'Công dụng của hệ thống truyền lực của ô tô (dùng để truyền)',
+                      'Công dụng của hệ thống phanh (dùng để giảm tốc độ)',
+                      'Công dụng của động cơ ô tô (nhiệt năng thành cơ năng)',
+                      'Công dụng của hộp số ô tô (chuyển động lùi)',
+                      'Công dụng của hệ thống lái (dùng chuyển hướng)',
+                      'Công dụng của ly hợp (dùng để truyền hoặc ngắt)',
+                      'Động cơ 2 kỳ (2 hành trình); 4 kỳ (4 hành trình)',
+                      'Yêu cầu của kính chắn gió (là loại kính an toàn)',
+                      'Yêu cầu kỹ thuật đối với dây đai an toàn (hãm giữ chặt)',
+                      'Âm lượng còi (<90<115 db)',
+                      'Khi vào số tiến hoặc lùi xe ô tô số tự động (đạp phanh chân hết hành trình)',
+                      'Khi quay đầu (đưa đầu xe về phía nguy hiểm)',
+                      'Điều khiển tăng số (nhịp nhàng, chính xác)',
+                      'Điều kiện Ô tô tới gần xe ngược chiều vào ban đêm (đèn chiếu xa sang đèn chiếu gần)',
+                      'Khi nhả phanh tay (kéo cần phanh tay về phía sau đồng thời bóp khóa hãm)',
+                      'Khi khởi hành ô tô trên đường bằng (đạp ly hợp hết hành trình)',
+                      'Điều kiện ô tô giảm số (vù ga phù hợp với tốc độ)',
+                      'Điều kiện ô tô trên đường trơn (không đánh lái ngoặt và phanh gấp'
+                    ]
+                  },
+                  {
+                    title: 'Không chọn chọn đáp án: “cả 2 ý trên” HOẶC “tất cả đều đúng',
+                    tips: [
+                      'Phương tiện giao thông đường bộ có 2 loại: Cơ giới + Thô sơ',
+                      'Phương tiện tham gia giao thông đường bộ bao gồm: Cơ giới + Thô sơ + Xe máy chuyên dùng (xe ủi, xe lu…)',
+                      'Trên đường có nhiều làn đường:',
+                      '– Chỉ được chuyển làn đường ở những nơi cho phép',
+                      '– Xe thô sơ đi lề bên phải trong cùng​'
+                    ]
+                  }
+
+            ]
+        }, {
+            type: 'sahinh',
+            tips: [
+                {
+                    title: 'Bài 1 - Xuất phát: Trước lúc lên xe tập lái bạn cần:',
+                    tips: [
+                      'Kiểm tra, nếu cần thì chỉnh lại ghế ngồi cho phù hợp với mình để thực hiện các thao tác lái, côn, phanh, ga … được dễ dàng.',
+                      'Kiểm tra 2 gương sao cho thấy được điểm bánh xe sau tiếp xúc với mặt đường. Cài dây an toàn, để máy nổ và chờ lệnh xuất phát.',
+                      'Khi có lệnh xuất phát bạn thực hiện như sau:',
+                      'Bật đèn xi nhan trái.',
+                      'Vào số 1, nhả côn từ từ để xe đi.',
+                      'Khi qua vạch xuất phát khoảng 5 m thì tắt xinhan.',
+                      'Khi xe đã đi bạn có thể nhả hết côn cho xe tự chạy, không cần đạp ga. Và đi đến bài số 2.',
+                      'Các lỗi bị trừ điểm :',
+                      '1. Không thắt dây an toàn, bị trừ 5 điểm.',
+                      '2. Không bật đèn xi nhan trái khi xuất phát trừ 5 điểm.',
+                      '3. Không tắt đèn xi nhan trái ở khoảng cách 5m sau vạch xuất phát (đèn xanh trên xe tắt), trừ 5 điểm',
+                      '4. Không bật và tắt đèn xi nhan trái kịp thời, bị trừ 5 điểm.',
+                      '5. Quá 20 giây kể từ khi có lệnh xuất phát (đèn xanh trên xe đã bật sáng) mà vẫn không đi qua vạch xuất phát, bị trừ 5 điểm.',
+                      '6. Để xe chết máy, bị trừ 5 điểm/1 lần.',
+                      '7. Để tốc độ động cơ quá 4000 vòng/phút, trừ 5 điểm.',
+                      '8. Lái xe vượt tốc độ quy định, trừ 5 điểm.',
+                      'Bị loại khỏi trường thi khi:',
+                      '1. Quá 10 giây kể từ khi có lệnh xuất phát (đèn xanh trên xe bật sáng) mà xe vẫn chưa vượt vạch xuất phát.',
+                      '2. Xử lý tình huống không hợp lý gây tai nạn: bị truất quyền thi.'
+                    ]
+                  },
+                  {
+                    title: 'Bài 2. Dừng xe nhường đường cho người đi bộ.',
+                    tips: [
+                      'Yêu cầu là bạn phải dừng xe đúng chỗ trước vạch trắng và đường đành cho người đi bộ ( sọc ngựa vằn). Cản xe phía trước cách vạch dừng không quá 0.5m.',
+                      'Đỗ già quá ( chạm vạch trắng ) hoặc non quá (xa vạch trắng) đều bị trừ 5 điểm.',
+                      'Các sân tập đã có sẵn vạch trên cọc biển báo hiệu. Khi vai người lái hoặc chốt cửa đến ngang cọc đó thì phải dừng lại.',
+                      'Khi xe vừa tới vị trí thì đạp côn và phanh xe dừng lại ( nếu không cắt côn trước có thể xe sẽ chết máy).',
+                      'Dừng xe xong, bạn nhả côn cho xe đi tiếp. Dừng lâu quá 30s sẽ bị trừ điểm.',
+                      'Các lỗi bị trừ điểm:',
+                      '1. Không dừng xe ở vạch quy định, bị trừ 5 điểm.',
+                      '2. Dừng xe chưa đến vạch dừng quy định bị trừ 5 điểm.',
+                      '3. Dừng xe quá vạch dừng quy định, bị trừ 5 điểm.',
+                      '4. Lái xe trên vỉa hè bị truất quyền thi.',
+                      '5. Xử lý tình huống không hợp lý gây tai nạn, bị truất quyền thi.',
+                      '6. Lái xe bị chết máy, lỗi một lần bị trừ 5 điểm',
+                      '7. Để tốc độc động cơ qua 4.000 vòng/phút, mỗi lần bị trừ 5 điểm. Lái xe quá tốc độ quy định, cứ 3 giây bị trừ 1 điểm.',
+                      'Các lỗi bị loại:',
+                      '1. Quá 30 giây mà xe vẫn chưa vượt vạch xuất phát.',
+                      '2. Gây tai nạn.'
+                    ]
+                  },
+                  {
+                    title: 'Bài 3. Dừng xe khởi hành trên dốc lên.',
+                    tips: [
+                      'Yêu cầu của bài này là xe không vượt quá vạch quy định, không bị tuột dốc quá 50cm, phải vượt khỏi dốc trong khoảng thời gian 30s ( nếu không sẽ bị loại).',
+                      'Không được tăng ga quá lớn ( số vòng quay động cơ trên 4000 vòng/ phút).',
+                      'Sau khi qua bài 2, bạn nhả hết côn, phanh cho xe tự bò lên dốc. Về bản chất, bài này giống bài 2 ở chỗ dừng xe rồi lại đi tiếp: nhưng vì xe đang ở trên dốc nên chịu lực kéo trôi ngược về chân dốc, nếu bỏ phanh chân thì xe sẽ trôi. Do vậy cách xử lý ở bài 3 khác bài 2.',
+                      'Có 2 cách:',
+                      '- Cách 1: Là cách dạy chính thống trong trường.',
+                      'Sau khi xe đã dừng trên dốc, bạn kéo phanh tay với mục đích là thay phanh chân, giữ xe tại điểm dừng. Khi đó, bạn có thể bỏ chân phanh ra và đặt vào chân ga mớm lên. Đồng thời chân trái thả côn từ từ, đến khi thấy tay lái hoặc cần số rung lên báo hiệu các lá côn đã cắt vào nhau thì nhả nhẹ phanh tay, nghe ngóng nếu thấy xe không bị trôi, tụt thì bỏ phanh tay, xe sẽ tự bò lên.',
+                      '- Cách 2: Là cách các lái già thường làm trong thực tế, không dùng đến phanh tay.',
+                      'Sau khi căn cho vai hoặc núm cửa gần tới ngang cọc biển báo vạch dừng xe thì bạn đạp côn, thắng dừng xe.',
+                      'Sau đó bạn nhả côn từ từ, đến khi thấy tay lái hoặc cần số rung thì nhả phanh chân, nghe ngóng, nếu thấy xe trôi thì đạp phanh chân vào, làm lại. Nếu thấy xe không trôi thì thả cho hết phanh chân, xe sẽ tự bò lên. Nếu nhả hết phanh chân mà xe vẫn đứng yên thì tiếp vào chân ga một chút đồng thời hơi nhả côn ra thêm – ( chú ý nếu nhả côn nhanh quá xe sẽ tắt máy - bị trừ điểm), khi này bạn phải nhanh chóng đề máy lại và tiếp tục bài.'
+                    ]
+                  },
+                  {
+                    title: 'Bài 4 – Đi xe qua hàng đinh vuông góc - chữ Z.',
+                    tips: [
+                      'Yêu cầu của bài này là 2 bánh xe bên phải phải đi lọt qua một vạch đường có bề rộng khoảng 30-35cm ( dấu B). Mỗi lần bánh xe chạm vạch sẽ bị trừ 5 điểm, bánh xe đè vạch cứ 5s bị trừ 5 điểm ( quá 2 phút chưa qua bài bị trừ 5 điểm)',
+                      'Khi rẽ vào đường hàng đinh bạn nên đánh lái muộn một chút để xe áp sát lề đường bên phải. Đi thật chậm và nhìn gương phải để quan sát bánh xe phía sau. Các sân thi cũng như sân tập thường kẻ sẵn vạch dẫn đường. Vạch này bằng mép ngoài hàng đinh, vì vậy nếu bánh xe cách vạch đó khoảng 10-15cm thì xe sẽ đi qua hàng đinh mà không chạm mép 2 bên.',
+                      'Ngoài việc nhìn gương phải, bạn phải căn và bám vào một điểm mốc ở phía trước, thường là một vạch dánh dấu trên lể đường trước mặt vì có khi lúc đầu xe đi đúng khoảng cách với vạch căn bên phải nhưng sau đó do giữ lái không tốt nên xe bị chệch hướng.',
+                      'Chú ý – nếu bánh xe bên phải đi ngoài hàng đinh thì sẽ bị loại.',
+                      'Sau khi đi qua hàng đinh, bạn thấy gương chiếu hậu ngang với góc bên trái thì đánh hết lái sang trái, đồng thời quan sát gương chiếu hậu và trả lái phù hợp để thành xe song song với vạch giới hạn và cách 30-40cm khi song song thì trả thẳng lái tiến đến góc vuông thứ 2.',
+                      'Quan sát khi thấy gương chiếu hậu bên phải ngang với góc thứ 2, dánh hết lái sang phải và trả thẳng lái tiến ra khỏi hình.',
+                      'Để có thể đánh hết lái và trả thẳng lái cho nhanh, trong quá trình học bạn nên tập thuần thục động tác….. quay tay! (xoay vô lăng).',
+                      'Đặc biệt chú ý trong bài này phải vê côn để xe đi thật chậm mới đánh lái kịp.'
+                    ]
+                  },
+                  {
+                    title: 'Bài 5- Qua ngã 4 có tín hiệu điều khiển giao thông.',
+                    tips: [
+                      'Yêu cầu phải chấp hành nghiêm tín hiệu giao thông, dừng xe cách vạch dừng quy định không quá 0,5m, đi ngang ngã 4 trong thời gian 20s, nếu:',
+                      '- Đi qua ngã 4 khi đèn đỏ bị trừ 10 điểm.',
+                      '- Dừng xe cách vạch hoặc quá vạch trên 0,5m bị trừ 5 điểm, chết máy mỗi lần trừ 5 điểm.',
+                      '- Không bật xinhan trái qua ngã 4, xinhan phải khi qua ngã 4 rẽ phải bị trừ 5 điểm.',
+                      '- Không thực hiện đúng quy trình bài thi bị trừ 5 điểm.',
+                      '- Tốc độ vòng quay quá 4000 vòng/ phút thì cứ 3s bị trừ 1 điểm.'
+                    ]
+                  },
+                  {
+                    title: 'Bài 6 – Đi xe qua đường vòng quanh co (chữ S).',
+                    tips: [
+                      'Yêu cầu giống bài 5 ( mỗi lần bánh xe chạm vạch trừ 5 điểm).',
+                      'Khác với bài 5, do chữ S là đường cong liên tục nên bạn phải điều chỉnh tay lái theo đường cong. Nguyên tắc lái xe ở đường cong “tiến bám lưng, lùi bám bụng” có nghĩa là: khi xe vào đường cua (ôm cua) nên căn theo phái đường cong dài hơn. Như vậy khi vào đường chữ S bạn cho xe bám sát lề bên phải, đánh lái sang trái cho xe đi nửa vòng cua đầu tiên sau đó lại bám sang lề đường bên trái, trả lái và đánh lái sang phải cho xe qua nốt nửa vòng cua còn lại.',
+                      ' '
+                    ]
+                  },
+                  {
+                    title: 'Bài 7 – Ghép xe vào nơi đỗ. (Lùi vào nhà xe dọc)',
+                    tips: [
+                      'Yêu cầu của bài này là trong vòng 2 phút bạn phải cho xe lùi được vào nơi đỗ ( Nhà xe), không chạm vạch và tiến ra khỏi nhả xe.',
+                      'Các lỗi:',
+                      '- Mỗi lần bánh xe chạm vạch trừ 5 điểm ( Mỗi 2 giây)',
+                      '- Quá thời gian 2 phút trừ 5 điểm ( Mỗi 2 phút trừ 5 điểm)',
+                      '- Bánh xe không chạm được vạch kiểm tra cuối nhà xe bị loại ( Máy thông báo)',
+                      '- Không hạng xe bị loại ( Nhầm nhà xe hạng xe khác)',
+                      'Khi bắt đầu rẽ vào khu vực nhà xe, bám sát lề đường bên trái cách khoảng (30cm – 50cm). Đi chậm( Số 1) khi ( vai người lái) đi ngang qua cửa nhà xe thì đánh hết lái về bên phải, tiếp tục cho xe tiến lên khi thấy thân xe có góc khoảng 40-45 độ so với đường ngang cửa nhà xe thì trả thẳng lái và dừng lại trước vạch giới hạn.',
+                      'Sau đó nhìn kiếng chiếu hậu bên trái quan sát phía sau( bánh xe, thân xe và góc nhà xe) – xem thế xe rồi vào số lùi, tùy theo thế xe “lơi” háy “dốc” mà ta đánh tay lái sang trái nhiều hay ít, điều chỉnh sau cho bánh xe sau khi lùi vào cách góc nhà xe khoảng 10-15 cm – khi bánh xe sắp đến góc nhà xe thì đánh nhiều lái sang trái cho xe lùi vào bên trong nhà xe – quan sát thấy thành xe, bánh xe song song với nhà xe và cách vạch giới hạn 20cm – 30cm thì trả thẳng lái và lùi vào cho đến khi bánh xe sau đè lên vạch thì dừng lại.',
+                      'Cài số 1 và tiến ra khỏi nhà xe. Lưu ý khi tiến ra, người phải ra khỏi cửa nhà xe hoặc hơn một chút nữa bạn hãy đánh lái rẽ sang phải để tránh trường hợp bánh sau chưa ra khỏi cửa nhà xe mà đã rẽ sẽ bị chèn vạch, trừ điểm.',
+                      'Nếu lỡ lùi chưa chính xác, đuôi xe cách xa cửa nhà xe, có thể chèn lên vạch hoặc vỉa ba-toa, bạn cứ bình tĩnh về lại số 1, tiến về phía trước, đánh lái sao cho xe ở vào vị trí thẳng trước cửa nhà xe, sau đó vào số lùi để làm lại việc lùi vào nhà xe. (Gọi là lùi xe 2 đỏ)'
+                    ]
+                  },
+                  {
+                      title: 'Bài 8. Dừng xe nơi giao nhau với đường sắt.',
+                      tips: ['Yêu cầu và thực hành của bài này giống bài 2.']
+                  },
+                  {
+                    title: 'Bài 9. Tăng tốc, tăng số.',
+                    tips: [
+                      'Yêu cầu của bài này là phải lên được số 2 và đạt tốc dộ trên 24kmh trước biển báo 20 màu xanh (biển báo tốc dộ tối thiểu phải đạt 20 km/h), sau đó lại phải về số 1 và giảm tốc dộ xuống dưới 20km/h.',
+                      'Sau khi qua nơi giao nhau với đường sắt, bạn rẽ sang đường chuẩn bị tăng tốc. Chỉnh lái cho xe thẳng, giữ chắc tay lái, nhả hết côn, phanh. Qua biển “Tăng số, tăng tốc” (Bảng vuông) Nhấn ga để xe tăng tốc, rồi khẩn trương sang số 2, tiếp tục nhấn ga tiếp (nửa ga là đủ đạt tốc độ). Qua biển 20 màu xanh, nhả ga, rà phanh, cho xe đi chậm lại, thậm chí dừng hẳn, về số 1 từ từ để xe đi qua biển 20 màu trắng.',
+                      'Chú ý là bạn không được cắt côn để xe trôi từ từ qua biển 20 màu trắng, vì yêu cầu ở đây là bạn phải đi qua biển này khi xe có gài số. Vì thế nếu bạn cắt côn làm bánh răng số không quay thì sẽ bị trừ 5 điểm.'
+                    ]
+                  },
+                  {
+                    title: 'Bài 10. Ghép xe ngang - Đỗ xe song song.',
+                    tips: [
+                      '- Ghép xe ngang vào nơi đỗ - đỗ xe song song là lùi xe vào nơi cần đỗ khi 2 đầu và 1 mặt bên đều bị khóa bởi vật cản hoặc những xe khác có chiều dài là 6,45m và rộng 2,2m. Có thể đối với người lái xe quen và thường xuyên thực hiện bài này thì cực kỳ dễ nhưng hiện bài này đang làm học viên chuẩn bị thi sát hạch lái xe bối rối và cảm giác lo lắng.',
+                      'Bước 1. Cặp xe song song với bãi đỗ, cách xe đang đỗ 50-80cm, tiến xe tới khoảng 2/3 bãi đỗ ( hoặc căn mũi xe ngang vạch trên)',
+                      'Bước 2. Đánh hết lái sang trái, tiến lên từ từ sao cho gương chiếu hậu bên trái + thành xe thẳng hàng 1 góc 45 độ so với bãi đỗ.',
+                      'Bước 3. Lùi xe từ từ vào bãi cho tới khi gương chiếu hậu bên tay phải ngang với vạch giới hạn ngoài, đánh hết lái sang trái, lùi xe vô chuồng.',
+                      'Bước 4. Khi bánh sau bên phải cán lên vạch ngang - trả thẳng lái, chỉnh xe ngay ngắn. Hoàn thành bài thi.',
+                      'Đánh hết lái sang trái, tiến lên ra khỏi chuồng tới các bài thi tiếp theo.',
+                      '- Yêu cầu phải đạt được trong bài này:',
+                      '+ Không được đè vạch cảm ứng giới hạn trong bài thi.',
+                      '+ Không vượt quá 2 phút trong bài thi này',
+                      '+ Giữ vòng tua máy không quá 4000 vòng/ phút',
+                      '+ Không bị tắt máy trong quá trình thực hiện bài tập và tốc độ không quá 24km'
+                    ]
+                  },
+                  {
+                    title: 'Bài 11. Kết thúc.',
+                    tips: [
+                      'Yêu cầu của bài này là đi thẳng qua vạch kết thúc, trước đó phải bật đèn xi-nhan phải (với ý nghĩa là xe tấp vào lề đường bên phải, chuẩn bị dừng hoặc đỗ xe).',
+                      'Sau khi vòng qua ngã tư lần cuối cùng, bạn chỉnh xe cho thẳng và để xe đi từ từ về vạch xuất phát. Bật xi-nhan bên phải. Chú ý sau khi đã bật xi-nhan thì giữ thẳng tay lái, không đánh lái sang trái sẽ làm tắt đèn xi-nhan, mất điểm. Để cho chắc ăn, bạn có thể dừng ngón giữa táy trái giữ cần xi-nhan để không cho cầ này bật xuống, hoặc hơi đánh lái sang phải một chút.',
+                      '-Trong sân sát hạch, ngoài khu vực các bài sát hạch, thí sinh sẽ gặp tình huống nguy hiểm; tình huống này sẽ gặp ngẫu nhiên, bất ngờ. Kể từ khi có tín hiệu tình huống nguy hiểm(tiếng loa báo tín hiệu nguy hiểm và đèn đỏ bật sáng) nếu không phanh dừng xe trong thời gian 3 giây bị trừ 10 điểm; khi hết báo hiệu tình huống nguy hiểm, nếu không ấn nút tắt tình huống nguy hiểm trên xe trong thời hạn 5 giây bị trừ 10 điểm; nếu không thực hiện được các thao tác trên bị trừ 10 điểm.',
+                      '- Khi điểm sát hạch dưới 80 điểm bị truất quyền sát hạch',
+                      '- Quá 15 phút mà chưa xong kết thúc(Chưa hoàn thành các bài thi) thì cứ quá 3 giây bị trừ 10 điểm.',
+                    ]
+                  },
+                  {
+                    title: 'TÌNH HUỐNG NGUY HIỂM:',
+                    tips: [
+                      'Trong sân sát hạch, ngoài khu vực các bài sát hạch, thí sinh sẽ gặp tình huống nguy hiểm, tình huống này xuất hiện ngẫu nhiên, bất ngờ. Kể từ khi có tín hiệu tình huống nguy hiểm ( tiếng loa báo hiệu nguy hiểm và đèn đỏ bật sáng, nếu không phanh dừng xe trong thời gian 3 giây thì bị trừ 10 điểm, khi hết báo hiệu tình huống nguy hiểm, nếu không ấn nút tắt tình huống nguy hiểm trên xe trong thời gian 5 giây bị trừ 10 điểm, nếu không thực hiện thao tác trên bị trừ 10 điểm.',
+                      'Mục đích của bài này giúp học viên rèn luyện phản xạ nhanh chóng để đối phó với các tình huống nguy hiểm bất ngờ khi đi trên thực tế.',
+                      'Cách xử lí tối ưu là bình tĩnh và thực hiện các thao tác một cách nhuần nhuyễn. '
+                    ]
+                  }
+            ]
+        }
+    ];
+}

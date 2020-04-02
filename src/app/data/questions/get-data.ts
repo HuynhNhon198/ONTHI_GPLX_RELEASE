@@ -1,6 +1,7 @@
 import { getA1, getTipA1 } from './a1';
-import { getA2 } from './a2';
-import { getB2 } from './b2';
+import { getA2, getTipA2 } from './a2';
+import { getB2, getTipB2 } from './b2';
+import { getTipB1 } from './b1';
 
 const getData = (type: string) => {
     let data = [];
@@ -18,11 +19,20 @@ const getData = (type: string) => {
     return data;
 };
 
-export function  getTips(type: string) {
+export function getTips(type: string) {
     let data = [];
     switch (type) {
         case 'a1':
             data = getTipA1();
+            break;
+        case 'a2':
+            data = getTipA2();
+            break;
+        case 'b1':
+            data = getTipB1();
+            break;
+        case 'b2':
+            data = getTipB2();
             break;
     }
     return data;
