@@ -7,10 +7,7 @@ const routes: Routes = [
   {
     path: '',
     component: OnthiPage
-  },  {
-    path: 'thithu',
-    loadChildren: () => import('./thithu/thithu.module').then( m => m.ThithuPageModule)
-  }
+  },
 
 ];
 

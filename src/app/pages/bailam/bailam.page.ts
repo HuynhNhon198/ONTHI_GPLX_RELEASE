@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { NavParams, ModalController, IonSlides, MenuController, AlertController, NavController } from '@ionic/angular';
-import { getQuestions } from 'src/app/data/questions/get-data';
+import { getQuestions, getCate } from 'src/app/data/questions/get-data';
 import { KetquathiComponent } from '../ketquathi/ketquathi.component';
 import { HelperService } from 'src/app/services/helper.service';
 
@@ -21,6 +21,7 @@ export class BailamPage implements OnInit {
   @Input() time: number;
   @Input() type: string;
   @Input() xemCauSai: boolean;
+  @Input() cate: any;
   @ViewChild('slide', { static: false }) slide: IonSlides;
   questions: any;
   timeView = '00:00';
@@ -28,11 +29,9 @@ export class BailamPage implements OnInit {
   questionInMenu = [];
   num: number;
   index: number;
+  loading = true;
+  constructor(public navCtrl: NavController, private helper: HelperService, public modalCtrl: ModalController, private menu: MenuController, public alertController: AlertController) {
 
-  constructor(public navCtrl: NavController, private helper: HelperService, public modalCtrl: ModalController, navParams: NavParams, private menu: MenuController, public alertController: AlertController) {
-    navParams.get('idQuestion');
-    navParams.get('time');
-    navParams.get('xemCauSai');
   }
 
   ngOnInit() {
@@ -41,22 +40,34 @@ export class BailamPage implements OnInit {
 
   async ionViewDidEnter() {
     if (this.xemCauSai) {
-      const questions = [];
-      const history = await this.helper.getStorage(`history-${this.helper.type}`);
-      history.forEach(h => {
-        const question = getQuestions(this.helper.type, h.id);
-        h.questions.forEach((q, i) => {
-          if (q.result === 2) {
-            questions.push(question.questions[i]);
-          }
+      if (this.cate) {
+        this.questions = getCate(this.type)[this.cate];
+      } else {
+        const questions = [];
+        const history = await this.helper.getStorage(`history-${this.helper.type}`);
+        history.forEach(h => {
+          const question = getQuestions(this.helper.type, h.id);
+          h.questions.forEach((q, i) => {
+            if (q.result === 2) {
+              questions.push(question.questions[i]);
+            }
+          });
         });
-      });
-      this.questions = questions;
+        this.questions = questions;
+      }
     } else {
       const questions = getQuestions(this.type, this.idQuestion);
       this.num = questions.num;
       this.questions = questions.questions;
       this.countDown();
+    }
+    this.loading = false;
+  }
+
+  async slideChange() {
+    if (this.xemCauSai) {
+      this.index = await this.slide.getActiveIndex();
+      this.getAnswersOfType(this.questions[this.index].result);
     }
   }
 
@@ -67,6 +78,11 @@ export class BailamPage implements OnInit {
     const sl = this.questions[this.index].answers.filter(x => x.checked).length;
     if (corrects === checkeds && checkeds === sl) {
       this.questions[this.index].result = Result.Dung;
+      const hisCate = await this.helper.getStorage(`history-cate-${this.type}`);
+      if (!hisCate[this.cate].includes(this.index)) {
+        hisCate[this.cate].push(this.index);
+      }
+      await this.helper.setStorage(`history-cate-${this.type}`, hisCate);
     } else {
       if (sl !== 0) {
         this.questions[this.index].result = Result.Sai;

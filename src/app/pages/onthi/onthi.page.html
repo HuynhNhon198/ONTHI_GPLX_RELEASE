@@ -59,36 +59,36 @@
     </ion-row>
     <ion-row *ngIf="list" class="roadmap">
       <ion-list>
-        <ion-item lines='none'>
+        <ion-item lines='none' (click)="presentXemCauSai('all')">
           <ion-avatar slot="start">
             <img src="assets/all.png">
           </ion-avatar>
           <ion-label>
-            <h3>HỌC TẤT CẢ <span style="float: right;">0/{{list.all.length}}</span></h3>
+            <h3>HỌC TẤT CẢ <span style="float: right;">{{hisCate.all.length}}/{{list.all}}</span></h3>
             <p>
-              <ion-progress-bar [value]="0.3"></ion-progress-bar>
+              <ion-progress-bar [value]="hisCate.all.length/list.all"></ion-progress-bar>
             </p>
           </ion-label>
         </ion-item>
-        <ion-item lines='none'>
+        <ion-item lines='none' (click)="presentXemCauSai('signs')">
           <ion-avatar slot="start">
             <img src="assets/traffic-sign.png">
           </ion-avatar>
           <ion-label>
-            <h3>BIỂN BÁO ĐƯỜNG BỘ <span style="float: right;">0/{{list.signs.length}}</span></h3>
+            <h3>BIỂN BÁO ĐƯỜNG BỘ <span style="float: right;">{{hisCate.signs.length}}/{{list.signs}}</span></h3>
             <p>
-              <ion-progress-bar value="0.5"></ion-progress-bar>
+              <ion-progress-bar [value]="hisCate.signs.length/list.signs"></ion-progress-bar>
             </p>
           </ion-label>
         </ion-item>
-        <ion-item lines='none'>
+        <ion-item lines='none' (click)="presentXemCauSai('shapes')">
           <ion-avatar slot="start">
             <img src="assets/roundabout.png">
           </ion-avatar>
           <ion-label>
-            <h3>SA HÌNH <span style="float: right;">0/{{list.shape.length}}</span></h3>
+            <h3>SA HÌNH <span style="float: right;">{{hisCate.shapes.length}}/{{list.shapes}}</span></h3>
             <p>
-              <ion-progress-bar value="0.8"></ion-progress-bar>
+              <ion-progress-bar [value]="hisCate.shapes.length/list.shapes"></ion-progress-bar>
             </p>
           </ion-label>
         </ion-item>

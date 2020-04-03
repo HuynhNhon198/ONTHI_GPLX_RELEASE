@@ -1,3 +1,7 @@
+<div id="loading" *ngIf="loading">
+  <p><img src="assets/loader.gif" /></p>
+</div>
+
 <div *ngIf="questions">
   <ion-menu side="end" menuId="chonCauHoi" contentId="main">
     <ion-header>
@@ -40,7 +44,7 @@
     </ion-header>
 
     <ion-content id="main" fullscreen class="ion-padding">
-      <ion-slides #slide>
+      <ion-slides #slide (ionSlideWillChange)='slideChange()'>
 
         <ion-slide *ngFor="let question of questions; let i= index">
           <div class="slide">
@@ -50,46 +54,33 @@
             </ion-text>
             <img *ngIf="question.img" src="{{question.img}}" />
             <ion-list>
-              <ion-item text-wrap lines="none" *ngFor="let answer of question.answers">
+              <ion-item text-wrap lines="none" style="border-bottom: #d7e8ff solid 1px;" *ngFor="let answer of question.answers">
                 <p>{{answer.answer}}</p>
                 <ion-checkbox disabled="{{(!question.result || question.result===3)? false: true}}" color="primary" slot="start" [(ngModel)]="answer.checked"></ion-checkbox>
               </ion-item>
             </ion-list>
-
-            <ion-item>
-              <ion-label>
-
-                <div *ngIf="question.result === 1">
-                  <h3>Đúng</h3>
-                  <div>
-                    <span>Đáp án đúng:</span><span *ngFor="let x of getAnswersOfType(1)">{{x}} </span>
-                  </div>
-                  <div>
-                    <span>Đáp án bạn chọn:</span><span *ngFor="let x of getAnswersOfType(2)">{{x}} </span>
-                  </div>
-                  <ion-icon name="checkmark-outline" slot="start"></ion-icon>
+            <div class="results" *ngIf="xemCauSai && index >= 0">
+              <ion-col>
+                <div class="ion-text-center" *ngIf="question.result === 1">
+                  <img src="assets/correct.png" width="10%" alt="">
+                  <h3 class="right"> ĐÚNG</h3>
+                  <h5 class="corr">ĐÁP ÁN ĐÚNG: <span *ngFor="let x of getAnswersOfType(1)">{{x}}</span></h5>
+                  <h5 class="choo">ĐÁP ÁN BẠN CHỌN: <span *ngFor="let x of getAnswersOfType(2)">{{x}}</span></h5>
                 </div>
-
-                <div *ngIf="question.result === 2">
-                  <h3>Sai</h3>
-                  <div>
-                    <span>Đáp án đúng:</span>
-                    <span *ngFor="let x of getAnswersOfType(1)">{{x}} </span>
-                  </div>
-                  <div>
-                    <span>Đáp án bạn chọn:</span>
-                    <span *ngFor="let x of getAnswersOfType(2)">{{x}} </span>
-                  </div>
-                  <ion-icon name="close-outline" slot="start"></ion-icon>
+                <div class="ion-text-center" *ngIf="question.result === 2">
+                  <img src="assets/cancel.png" width="10%" alt="">
+                  <h3 class="wrong"> SAI</h3>
+                  <h5 class="corr">ĐÁP ÁN ĐÚNG: <span *ngFor="let x of getAnswersOfType(1)">{{x}}</span></h5>
+                  <h5 class="choo">ĐÁP ÁN BẠN CHỌN: <span *ngFor="let x of getAnswersOfType(2)">{{x}}</span></h5>
                 </div>
-
-                <div *ngIf="question.result === 3">
-                  <h3>Bạn chưa chọn đáp án</h3>
-                  <ion-icon name="alert-outline" slot="start"></ion-icon>
+          
+                <div class="ion-text-center" *ngIf="question.result === 3">
+                  <img src="assets/error.png" width="10%" alt="">
+                  <h3> CHƯA LÀM</h3>
+                  <h5 class="corr">ĐÁP ÁN ĐÚNG: <span *ngFor="let x of getAnswersOfType(1)">{{x}}</span></h5>
                 </div>
-              </ion-label>
-            </ion-item>
-
+              </ion-col>
+            </div>
           </div>
         </ion-slide>
       </ion-slides>

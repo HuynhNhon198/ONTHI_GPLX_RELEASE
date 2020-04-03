@@ -79,3 +79,26 @@ export function getAllQuestions(type: string) {
     };
 }
 
+export function getCate(typeBig: string, length?: boolean) {
+    // console.log(typeBig);
+    const all = getAllQuestions(typeBig).questions;
+
+    const filterType = (x, min: number, max: number) => {
+      if (x.img === '') {
+        return false;
+      }
+      const vitri = Number(x.img.match(/\d+/)[0]);
+      return (min < vitri && vitri < max);
+    };
+
+    const signs = all.filter(x => filterType(x, 255, 356));
+    const shapes = all.filter(x => filterType(x, 355, 451));
+    // console.log(all);
+    const list = {
+      all: length ? all.length : all,
+      signs: length ? signs.length : signs,
+      shapes: length ? shapes.length : shapes
+    };
+    return list;
+}
+

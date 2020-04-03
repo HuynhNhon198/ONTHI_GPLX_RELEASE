@@ -29,7 +29,7 @@ import { KetquathichitietComponent } from './pages/ketquathi/ketquathichitiet/ke
     LichsuthiComponent,
     SelectTypeComponent,
     KetquathichitietComponent,
-    MeothiComponent
+    MeothiComponent,
   ],
   entryComponents: [
     ThithuPage,
@@ -38,7 +38,7 @@ import { KetquathichitietComponent } from './pages/ketquathi/ketquathichitiet/ke
     LichsuthiComponent,
     SelectTypeComponent,
     KetquathichitietComponent,
-    MeothiComponent
+    MeothiComponent,
   ],
   imports: [
     BrowserModule,

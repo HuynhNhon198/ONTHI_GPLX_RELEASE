@@ -21,7 +21,6 @@ export class LuatgiaothongPage implements OnInit {
 
   renderData(type: string) {
     this.signs = getSignByType(type);
-    console.log(this.signs);
   }
 
   segmentChanged(ev: any) {

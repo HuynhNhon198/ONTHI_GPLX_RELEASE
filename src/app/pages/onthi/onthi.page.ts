@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ThithuPage } from './thithu/thithu.page';
-import { getAllQuestions } from 'src/app/data/questions/get-data';
+import { getAllQuestions, getCate } from 'src/app/data/questions/get-data';
 import { HelperService } from 'src/app/services/helper.service';
 import { SelectTypeComponent } from 'src/app/select-type/select-type.component';
 import { LichsuthiComponent } from './lichsuthi/lichsuthi.component';
@@ -18,7 +18,12 @@ export class OnthiPage implements OnInit {
   list: {
     all: any;
     signs: any;
-    shape: any;
+    shapes: any;
+  };
+  hisCate = {
+    all: [],
+    signs: [],
+    shapes: [],
   };
   constructor(
     public modalController: ModalController,
@@ -68,35 +73,40 @@ export class OnthiPage implements OnInit {
     return await modal.present();
   }
 
-  async presentXemCauSai() {
+  async presentXemCauSai(cate: any) {
     const modal = await this.modalController.create({
       component: BailamPage,
       componentProps: {
-        xemCauSai: true
+        xemCauSai: true,
+        cate,
+        type: this.type
       }
     });
-    return await modal.present();
+    await modal.present();
+    await modal.onWillDismiss();
+    this.getHisCate();
   }
 
 
   renderData(type: string) {
     // console.log(getListQuestions(type));
-    const all = getAllQuestions(type).questions;
+    this.list = getCate(type, true);
+    this.getHisCate();
+  }
 
-    const filterType = (x, min: number, max: number) => {
-      if (x.img === '') {
-        return false;
-      }
-      const vitri = Number(x.img.match(/\d+/)[0]);
-      return (min < vitri && vitri < max);
-    };
-
-    this.list = {
-      all,
-      signs: all.filter(x => filterType(x, 255, 356)),
-      shape: all.filter(x => filterType(x, 355, 451))
-    };
-    console.log(this.list);
+  async getHisCate() {
+    const data = await this.helper.getStorage(`history-cate-${this.type}`);
+    if (data === null) {
+      this.hisCate = {
+        all: [],
+        shapes: [],
+        signs: []
+      };
+      await this.helper.setStorage(`history-cate-${this.type}`, this.hisCate);
+      console.log('saved');
+    } else {
+      this.hisCate = data;
+    }
   }
 
 }
