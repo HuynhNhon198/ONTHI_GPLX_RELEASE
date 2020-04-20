@@ -21,7 +21,6 @@ export class KetquathichitietComponent implements OnInit {
   }
 
   getData() {
-    console.log(this.question);
   }
 
   getAnswersOfType(type) {

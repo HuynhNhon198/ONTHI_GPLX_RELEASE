@@ -1,26 +1,26 @@
-<div id="loading" *ngIf="loading">
-  <p><img src="assets/loader.gif" /></p>
-</div>
 
 <div *ngIf="questions">
-  <ion-menu side="end" menuId="chonCauHoi" contentId="main">
+  <ion-menu side="end" menuId="chonCauHoi" contentId="main" (ionWillClose)='questionInMenu = []'>
     <ion-header>
       <ion-toolbar color="primary">
         <ion-title>Danh Mục Câu Hỏi</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <ion-list>
-        <ion-item *ngFor="let question of questionInMenu; let i= index" (click)="slideTo(i)">
-          <ion-label>
-            <h3 style="font-size: 18px;
-            font-weight: 500;">Câu số {{i+1}} <span class="status"
-                [ngStyle]='{"background": question.checked === "ĐÃ LÀM"? "#3880ff": "#dc4545"}'>{{question.checked}}</span>
-            </h3>
-            <p style="font-size: 12px;color: #666666">{{question.q}}</p>
-          </ion-label>
-        </ion-item>
-      </ion-list>
+      <h4 *ngIf="questionInMenu.length === 0; else rendered" style="text-align: center;">ĐANG QUÉT...</h4>
+      <ng-template #rendered>
+        <ion-list>
+          <ion-item *ngFor="let question of questionInMenu; let i= index" (click)="slideTo(i)">
+            <ion-label>
+              <h3 style="font-size: 18px;
+              font-weight: 500;">Câu số {{i+1}} <span class="status"
+                  [ngStyle]='{"background": question.checked === "ĐÃ LÀM"? "#3880ff": "#dc4545"}'>{{question.checked}}</span>
+              </h3>
+              <p style="font-size: 12px;color: #666666">{{question.q}}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ng-template>
     </ion-content>
   </ion-menu>
 
@@ -33,9 +33,13 @@
           </ion-button>
         </ion-buttons>
         <ion-title *ngIf="timeView!=='00:00'">{{timeView}}</ion-title>
-        <ion-title *ngIf="xemCauSai">CÂU ĐÃ LÀM SAI</ion-title>
+        <ion-title *ngIf="xemCauSai && !cate">CÂU ĐÃ LÀM SAI</ion-title>
+        <ion-title *ngIf="xemCauSai && cate==='all'">HỌC TẤT CẢ</ion-title>
+        <ion-title *ngIf="xemCauSai && cate==='signs'">HỌC BIỂN BÁO</ion-title>
+        <ion-title *ngIf="xemCauSai && cate==='shapes'">HỌC SA HÌNH</ion-title>
+        <ion-title *ngIf="xemCauSai && cate==='liet'">CÂU ĐIỂM LIỆT</ion-title>
+        <ion-title *ngIf="byDay">Ngày {{day.date}} - Đề {{day.q}}</ion-title>
         <ion-buttons slot="end">
-          <span></span>
           <ion-button (click)="openMenu()">
             <ion-icon slot="icon-only" name="list"></ion-icon>
           </ion-button>
@@ -46,7 +50,7 @@
     <ion-content id="main" fullscreen class="ion-padding">
       <ion-slides #slide (ionSlideWillChange)='slideChange()'>
 
-        <ion-slide *ngFor="let question of questions; let i= index">
+        <ion-slide *ngFor="let question of questions; let i= index" >
           <div class="slide">
             <h4>Câu {{i+1}}/{{questions.length}}</h4>
             <ion-text color="dark">

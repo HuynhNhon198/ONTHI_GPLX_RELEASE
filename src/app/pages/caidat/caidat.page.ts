@@ -23,6 +23,14 @@ export class CaidatPage implements OnInit {
     this.type = await this.helper.getStorage('type');
   }
 
+  ionViewWillEnter() {
+    this.helper.setColorStatusBar('#0f2659', true);
+  }
+
+  ionViewWillLeave() {
+    this.helper.setColorStatusBar('#ffffff');
+  }
+
   async setType() {
     const modal = await this.modalController.create({
       component: SelectTypeComponent,
@@ -32,9 +40,7 @@ export class CaidatPage implements OnInit {
       }
     });
     await modal.present();
-    this.helper.setColorStatusBar('#3171e0', true);
     const { data } = await modal.onWillDismiss();
-    this.helper.setColorStatusBar('#ffffff');
     this.type = data.type || this.type;
   }
 

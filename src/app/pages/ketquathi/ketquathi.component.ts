@@ -13,6 +13,8 @@ import { KetquathichitietComponent } from './ketquathichitiet/ketquathichitiet.c
 })
 export class KetquathiComponent implements OnInit {
   @Input() idQuestion: string;
+  @Input() byDay: boolean;
+  passed = false;
   nPass: number;
   nFail: number;
   data: {
@@ -46,8 +48,7 @@ export class KetquathiComponent implements OnInit {
 
   async getData() {
     const history = await this.helper.getStorage(`history-${this.helper.type}`);
-    this.data = history.filter(x => x.id === this.idQuestion)[0];
-    // console.log(this.data);
+    this.data = history.find(x => x.id === this.idQuestion && x.byDay === this.byDay);
     this.nPass = this.data.questions.filter(
       x => x.result === Result.Dung
     ).length;
@@ -64,7 +65,7 @@ export class KetquathiComponent implements OnInit {
       x.totalQuestions = this.questions.length;
     });
     this.result = this.questions;
-    // console.log(this.questions);
+    this.passed = this.nPass > (this.result.length === 20 ? 15 : 25);
   }
 
   getResult(option: number) {

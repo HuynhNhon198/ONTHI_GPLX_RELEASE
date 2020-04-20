@@ -21,7 +21,8 @@ export class LichsuthiComponent implements OnInit {
     nFail: number,
     pass: boolean,
     ctime: number,
-    id: string
+    id: string,
+    byDay: boolean
   }[];
 
   constructor(public modalCtrl: ModalController, private helper: HelperService) { }
@@ -36,13 +37,16 @@ export class LichsuthiComponent implements OnInit {
 
   async getData() {
     this.listQuestions = await this.helper.getStorage(`history-${this.helper.type}`);
-    if (this.listQuestions !== null) {
+    if (this.listQuestions !== null && this.listQuestions.filter(x => !x.byDay).length > 0) {
+      this.listQuestions = this.listQuestions.filter(x => !x.byDay);
       this.listQuestions = this.helper.sortArrObj(this.listQuestions, 'ctime', 'desc');
-      console.log(this.listQuestions);
       this.listQuestions.forEach(question => {
         question.nPass = question.questions.filter(x => x.result === 1).length;
         question.nFail = question.questions.filter(x => x.result === 2).length;
       });
+    } else {
+      this.modalCtrl.dismiss();
+      this.helper.toastNoData();
     }
   }
 

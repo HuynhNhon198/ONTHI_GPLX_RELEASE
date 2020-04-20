@@ -13,47 +13,44 @@
     <ion-row>
       <ion-col class="pos-1" (click)="presentThiThu()">
         <div class="cate">
-          <h4>
-            <ion-icon name="document-text"></ion-icon>
-          </h4>
-          <ion-label>THI THỬ</ion-label>
+          <img src="assets/icon/icon-02.png">
+          <h4>THI THỬ</h4>
         </div>
       </ion-col>
       <ion-col class="pos-2" (click)="presentXemCauSai()">
         <div class="cate">
-          <h4>
-            <ion-icon name="close-circle"></ion-icon>
-          </h4>
-          <ion-label>CÂU SAI</ion-label>
+          <img src="assets/icon/icon-03.png">
+          <h4>CÂU SAI</h4>
         </div>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col class="pos-3" (click)="presentMeoThi()">
         <div class="cate" >
-          <h4>
-            <ion-icon name="flash"></ion-icon>
-          </h4>
-          <ion-label>MẸO THI</ion-label>
+          <img src="assets/icon/icon-04.png">
+          <h4>MẸO THI</h4>
         </div>
       </ion-col>
       <ion-col class="pos-4" (click)="presentLichSuThi()">
         <div class="cate">
-          <h4>
-            <ion-icon name="time"></ion-icon>
-          </h4>
-          <ion-label>LỊCH SỬ THI</ion-label>
+          <img src="assets/icon/icon-05.png">
+          <h4>LỊCH SỬ THI</h4>
         </div>
       </ion-col>
     </ion-row>
-    <ion-row style='border: #3880ff59 dashed 2px;background: #1da1f221;
+    <ion-row style='background: #1da1f24a;
     margin: 20px;
-    border-radius: 15px;'>
+    border-radius: 15px;' (click)="openSmartLearn()">
       <div class="roadmap">
-        <h4>QUÁ TRÌNH HỌC</h4>
+        <h4 style="text-align: center;">HỌC THÔNG MINH</h4>
         <ion-item lines='none'>
-          <ion-icon style="margin-right: 5px;" slot="start" name="checkmark-circle"></ion-icon>
-          <ion-label>50% ĐẠT</ion-label>
+          <ion-avatar slot="start">
+            <img src="assets/icon/icon-07.png">
+          </ion-avatar>
+          <ion-label style="margin-top: 0;">
+            <h4 class="percent">{{percent}} % ĐẠT</h4>
+            <p>Tỉ lệ đạt của bạn cần > 80%</p>
+          </ion-label>
         </ion-item>
       </div>
     </ion-row>
@@ -70,9 +67,20 @@
             </p>
           </ion-label>
         </ion-item>
+        <ion-item *ngIf="type === 'b2' || type === 'b1'" lines='none' (click)="presentXemCauSai('liet')">
+          <ion-avatar slot="start">
+            <img src="assets/liet.png">
+          </ion-avatar>
+          <ion-label>
+            <h3>60 CÂU ĐIỂM LIỆT <span style="float: right;">{{hisCate.liet.length}}/{{list.liet}}</span></h3>
+            <p>
+              <ion-progress-bar [value]="hisCate.liet.length/list.liet"></ion-progress-bar>
+            </p>
+          </ion-label>
+        </ion-item>
         <ion-item lines='none' (click)="presentXemCauSai('signs')">
           <ion-avatar slot="start">
-            <img src="assets/traffic-sign.png">
+            <img src="assets/icon/icon-06.png">
           </ion-avatar>
           <ion-label>
             <h3>BIỂN BÁO ĐƯỜNG BỘ <span style="float: right;">{{hisCate.signs.length}}/{{list.signs}}</span></h3>
@@ -83,7 +91,7 @@
         </ion-item>
         <ion-item lines='none' (click)="presentXemCauSai('shapes')">
           <ion-avatar slot="start">
-            <img src="assets/roundabout.png">
+            <img src="assets/icon/icon-09.png">
           </ion-avatar>
           <ion-label>
             <h3>SA HÌNH <span style="float: right;">{{hisCate.shapes.length}}/{{list.shapes}}</span></h3>

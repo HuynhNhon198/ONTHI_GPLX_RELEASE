@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { NavParams, ModalController, IonSlides, MenuController, AlertController, NavController } from '@ionic/angular';
+import { NavParams, ModalController, IonSlides, MenuController, AlertController, NavController, LoadingController } from '@ionic/angular';
 import { getQuestions, getCate } from 'src/app/data/questions/get-data';
 import { KetquathiComponent } from '../ketquathi/ketquathi.component';
 import { HelperService } from 'src/app/services/helper.service';
@@ -21,16 +21,18 @@ export class BailamPage implements OnInit {
   @Input() time: number;
   @Input() type: string;
   @Input() xemCauSai: boolean;
+  @Input() byDay: boolean;
   @Input() cate: any;
+  @Input() day: any;
   @ViewChild('slide', { static: false }) slide: IonSlides;
-  questions: any;
+  questions: any = [];
   timeView = '00:00';
   count = 0;
   questionInMenu = [];
   num: number;
   index: number;
-  loading = true;
-  constructor(public navCtrl: NavController, private helper: HelperService, public modalCtrl: ModalController, private menu: MenuController, public alertController: AlertController) {
+  preData: any;
+  constructor(private loadingController: LoadingController, public navCtrl: NavController, private helper: HelperService, public modalCtrl: ModalController, private menu: MenuController, public alertController: AlertController) {
 
   }
 
@@ -39,37 +41,64 @@ export class BailamPage implements OnInit {
   }
 
   async ionViewDidEnter() {
+    const loading = await this.loadingController.create({
+      message: this.cate ? 'ĐANG QUÉT DỮ LIỆU...' : '',
+    });
+    await loading.present();
     if (this.xemCauSai) {
       if (this.cate) {
-        this.questions = getCate(this.type)[this.cate];
+        this.preData = getCate(this.type)[this.cate];
+        this.questions = this.preData.map(x => {
+          return { question: x.question };
+        });
+        this.questions[0] = this.preData[0];
+        this.renderQuestionMenu();
       } else {
         const questions = [];
         const history = await this.helper.getStorage(`history-${this.helper.type}`);
-        history.forEach(h => {
-          const question = getQuestions(this.helper.type, h.id);
-          h.questions.forEach((q, i) => {
-            if (q.result === 2) {
-              questions.push(question.questions[i]);
-            }
+        if (history !== null && history.length > 0) {
+          history.forEach(h => {
+            const question = getQuestions(this.helper.type, h.id);
+            h.questions.forEach((q, i) => {
+              if (q.result === 2) {
+                questions.push(question.questions[i]);
+              }
+            });
           });
-        });
-        this.questions = questions;
+          this.questions = questions;
+        } else {
+          this.modalCtrl.dismiss();
+          this.helper.toastNoData();
+        }
       }
     } else {
       const questions = getQuestions(this.type, this.idQuestion);
       this.num = questions.num;
+      // alert(this.num);
       this.questions = questions.questions;
-      this.countDown();
+      if (this.byDay) { } else {
+        this.countDown();
+      }
     }
-    this.loading = false;
+    setTimeout(async () => {
+      await loading.dismiss();
+    }, 1000);
   }
 
   async slideChange() {
     if (this.xemCauSai) {
       this.index = await this.slide.getActiveIndex();
+      if (this.cate) {
+        this.questions[this.index] = this.preData[this.index];
+      }
       this.getAnswersOfType(this.questions[this.index].result);
     }
   }
+  // checkboxChange() {
+  //   setTimeout(() => {
+  //     this.renderQuestionMenu();
+  //   }, 500);
+  // }
 
   async checkAnswers() {
     this.index = await this.slide.getActiveIndex();
@@ -78,11 +107,13 @@ export class BailamPage implements OnInit {
     const sl = this.questions[this.index].answers.filter(x => x.checked).length;
     if (corrects === checkeds && checkeds === sl) {
       this.questions[this.index].result = Result.Dung;
-      const hisCate = await this.helper.getStorage(`history-cate-${this.type}`);
-      if (!hisCate[this.cate].includes(this.index)) {
-        hisCate[this.cate].push(this.index);
+      if (this.cate) {
+        const hisCate = await this.helper.getStorage(`history-cate-${this.type}`);
+        if (!hisCate[this.cate].includes(this.index)) {
+          hisCate[this.cate].push(this.index);
+        }
+        await this.helper.setStorage(`history-cate-${this.type}`, hisCate);
       }
-      await this.helper.setStorage(`history-cate-${this.type}`, hisCate);
     } else {
       if (sl !== 0) {
         this.questions[this.index].result = Result.Sai;
@@ -166,12 +197,12 @@ export class BailamPage implements OnInit {
     result.ctime = this.helper.create_milisec('');
     result.id = this.idQuestion;
     result.num = this.num;
-
+    result.byDay = this.byDay;
     history = await this.helper.getStorage(`history-${this.helper.type}`);
     if (!history) {
       history = [];
     }
-    const index = history.findIndex(x => x.id === this.idQuestion);
+    const index = history.findIndex(x => x.id === this.idQuestion && x.byDay === this.byDay);
     if (index !== -1) {
       history[index] = result;
     } else {
@@ -190,19 +221,28 @@ export class BailamPage implements OnInit {
         this.count--;
       } else {
         clearInterval(timer);
+        this.submitHandler();
       }
     }, 1000);
   }
 
-  openMenu() {
+  renderQuestionMenu() {
     this.questionInMenu = this.questions.map(x => {
+      let checked = 'CHƯA LÀM';
+      if (x.answers) {
+        checked = x.answers.find(y => y.checked) ? 'ĐÃ LÀM' : 'CHƯA LÀM';
+      }
       return {
         q: x.question,
-        checked: x.answers.find(y => y.checked) ? 'ĐÃ LÀM' : 'CHƯA LÀM'
+        checked
       };
     });
+  }
+
+  async openMenu() {
     this.menu.enable(true, 'chonCauHoi');
-    this.menu.open('chonCauHoi');
+    await this.menu.open('chonCauHoi');
+    this.renderQuestionMenu();
   }
 
   convertToTimeView(sec: number) {
@@ -213,7 +253,6 @@ export class BailamPage implements OnInit {
   }
 
   slideTo(index: number) {
-    console.log(index);
     this.menu.close();
     this.slide.slideTo(index);
   }
@@ -221,6 +260,7 @@ export class BailamPage implements OnInit {
   async dismiss() {
     if (this.xemCauSai) {
       this.modalCtrl.dismiss();
+      this.helper.setColorStatusBar('#ffffff');
     } else {
       const alert = await this.alertController.create({
         header: 'THOÁT BÀI THI?',
@@ -250,6 +290,7 @@ export class BailamPage implements OnInit {
       component: KetquathiComponent,
       componentProps: {
         idQuestion: this.idQuestion,
+        byDay: this.byDay
       }
     });
     await modal.present();

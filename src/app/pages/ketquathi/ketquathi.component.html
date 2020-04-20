@@ -2,7 +2,7 @@
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-button (click)="close()">
-        <ion-icon slot="icon-only" name="arrow-back" ></ion-icon>
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title>KẾT QUẢ THI</ion-title>
@@ -12,22 +12,25 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf='data' >
-  <h1 *ngIf="data.pass; else fail">PASS</h1>
-  <ng-template #fail>
-    <h1>RỚT</h1>
-  </ng-template>
+<ion-content *ngIf='data'>
+  <ng-container>
+    <h1 *ngIf="passed; else fail" style="color: #179a17">ĐỖ</h1>
+    <ng-template #fail>
+      <h1>TRƯỢT</h1>
+    </ng-template>
+  </ng-container>
   <ion-row class="resul-type">
-    <ion-col [ngClass]="{'highlight': r == 0}" sizes (click)="getResult(0)" style="border-right: none;font-size: 18px;border-radius: 20px 0 0 20px;padding-top: 13px;">Tất cả</ion-col>
-    <ion-col [ngClass]="{'highlight-1': r == 1}"  (click)="getResult(1)" style="border-right: none;">
+    <ion-col [ngClass]="{'highlight': r == 0}" sizes (click)="getResult(0)"
+      style="border-right: none;font-size: 18px;border-radius: 20px 0 0 20px;padding-top: 13px;">Tất cả</ion-col>
+    <ion-col [ngClass]="{'highlight-1': r == 1}" (click)="getResult(1)" style="border-right: none;">
       <span>{{nPass}}</span>
       <img src="assets/correct.png" width="16px" alt="">
     </ion-col>
-    <ion-col [ngClass]="{'highlight-2': r == 2}"  (click)="getResult(2)"  style="border-right: none;">
+    <ion-col [ngClass]="{'highlight-2': r == 2}" (click)="getResult(2)" style="border-right: none;">
       <span>{{nFail}}</span>
       <img src="assets/cancel.png" width="16px" alt="">
     </ion-col>
-    <ion-col [ngClass]="{'highlight-3': r == 3}"  (click)="getResult(3)" style="    border-radius: 0 20px 20px 0" >
+    <ion-col [ngClass]="{'highlight-3': r == 3}" (click)="getResult(3)" style="    border-radius: 0 20px 20px 0">
       <span>{{data.questions.length - nPass - nFail}}</span>
       <img src="assets/error.png" width="16px" alt="">
     </ion-col>

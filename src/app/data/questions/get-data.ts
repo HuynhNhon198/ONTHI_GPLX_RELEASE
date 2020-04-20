@@ -2,6 +2,7 @@ import { getA1, getTipA1 } from './a1';
 import { getA2, getTipA2 } from './a2';
 import { getB2, getTipB2 } from './b2';
 import { getTipB1 } from './b1';
+import { get60 } from './60-cauliet';
 
 const getData = (type: string) => {
     let data = [];
@@ -66,7 +67,6 @@ export function getAllQuestions(type: string) {
             //         signData.push(q);
             //     }
             // }
-            // console.log(allQuestions, q.question.trim().toLowerCase() );
             if (allQuestions.findIndex(x => x.questions === q.question) === -1) {
                 allQuestions.push(q);
             }
@@ -80,7 +80,6 @@ export function getAllQuestions(type: string) {
 }
 
 export function getCate(typeBig: string, length?: boolean) {
-    // console.log(typeBig);
     const all = getAllQuestions(typeBig).questions;
 
     const filterType = (x, min: number, max: number) => {
@@ -93,11 +92,11 @@ export function getCate(typeBig: string, length?: boolean) {
 
     const signs = all.filter(x => filterType(x, 255, 356));
     const shapes = all.filter(x => filterType(x, 355, 451));
-    // console.log(all);
     const list = {
       all: length ? all.length : all,
       signs: length ? signs.length : signs,
-      shapes: length ? shapes.length : shapes
+      shapes: length ? shapes.length : shapes,
+      liet: length ? get60().length : get60()
     };
     return list;
 }

@@ -1,17 +1,26 @@
 ion-content {
-    --padding-top: 20px;
-
+    // --padding-top: 20px;
+    --background: #e4eff6;
+    img.cover {
+        position: sticky;
+        top: 0;
+        z-index: 3;
+        width: 100%;
+    }
+    ion-list {
+        background: #e4eff6;
+    }
     ion-item {
         border-bottom: #e8e8e8ab solid 1px;
-
+        --background: #e4eff6;
         h1 {
             text-transform: uppercase;
             font-weight: 500;
             color: #293e63f2;
         }
 
-        ion-icon {
-            color: #0442af;
+        img {
+            border-radius: 0;
         }
 
         p {
@@ -24,5 +33,10 @@ ion-content {
             font-size: 14px;
             color: #000;
         }
+
+    }
+    ion-note {
+        font-weight: bold;
+        color: #000;
     }
 }

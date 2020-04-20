@@ -7,6 +7,7 @@ import { SelectTypeComponent } from 'src/app/select-type/select-type.component';
 import { LichsuthiComponent } from './lichsuthi/lichsuthi.component';
 import { MeothiComponent } from './meothi/meothi.component';
 import { BailamPage } from '../bailam/bailam.page';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-onthi',
@@ -19,21 +20,30 @@ export class OnthiPage implements OnInit {
     all: any;
     signs: any;
     shapes: any;
+    liet: any
   };
   hisCate = {
     all: [],
     signs: [],
     shapes: [],
+    liet: []
   };
+  percent = 0;
   constructor(
     public modalController: ModalController,
-    private helper: HelperService
+    private helper: HelperService,
+    private router: Router
   ) { }
 
   async ngOnInit() {
+    // this.helper.clearStorage();
   }
 
+  openSmartLearn() {
+    this.router.navigate(['tabs/tab2']);
+  }
   async ionViewDidEnter() {
+    this.helper.setColorStatusBar('#ffffff');
     const type = await this.helper.getStorage('type');
     if (type === null) {
       const modal = await this.modalController.create({
@@ -73,7 +83,7 @@ export class OnthiPage implements OnInit {
     return await modal.present();
   }
 
-  async presentXemCauSai(cate: any) {
+  async presentXemCauSai(cate?: any) {
     const modal = await this.modalController.create({
       component: BailamPage,
       componentProps: {
@@ -89,8 +99,8 @@ export class OnthiPage implements OnInit {
 
 
   renderData(type: string) {
-    // console.log(getListQuestions(type));
     this.list = getCate(type, true);
+    this.calculator();
     this.getHisCate();
   }
 
@@ -100,12 +110,19 @@ export class OnthiPage implements OnInit {
       this.hisCate = {
         all: [],
         shapes: [],
-        signs: []
+        signs: [],
+        liet: []
       };
       await this.helper.setStorage(`history-cate-${this.type}`, this.hisCate);
-      console.log('saved');
     } else {
       this.hisCate = data;
+    }
+  }
+
+  async calculator() {
+    const percent = await this.helper.getStorage(`percent-${this.helper.type}`);
+    if (percent !== null) {
+      this.percent = percent;
     }
   }
 

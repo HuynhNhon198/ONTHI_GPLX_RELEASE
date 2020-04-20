@@ -1,5 +1,13 @@
 
 ion-tab-bar {
     --background: rgba(29, 161, 242, 0.08);
-    --color: #1da1f2
+    --color: #4c8dff;
+
+    img {
+        width: 50%;
+    }
+
+    ion-tab-button[aria-selected=true] {
+        color: #023b9e;
+    }
 }

@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { ToastController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HelperService {
 
-  type = '';
+  type = 'a1';
   constructor(
     private storage: Storage,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    public toastController: ToastController
   ) {}
 
   async getStorage(key: string) {
@@ -23,6 +25,14 @@ export class HelperService {
 
   async clearStorage() {
     await this.storage.clear();
+  }
+
+  async toastNoData() {
+    const toast = await this.toastController.create({
+      message: 'CHƯA CÓ DỮ LIỆU',
+      duration: 1500
+    });
+    toast.present();
   }
 
   setColorStatusBar(hex: string, whiteText?: boolean) {

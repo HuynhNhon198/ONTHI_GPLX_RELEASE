@@ -5,61 +5,38 @@
 </ion-header> -->
 
 <ion-content>
-  <!-- <ion-list>
-    <ion-item-divider>
-      <ion-label color="primary">Trang chủ</ion-label>
-      <ion-icon name="home" size="large" slot="start"></ion-icon>
-    </ion-item-divider>
-    <ion-item-divider>
-      <ion-label>Bằng lái</ion-label>
-      <ion-icon name="reader" size="large" slot="start"></ion-icon>
-    </ion-item-divider>
-    <ion-item lines="none">
-      <ion-label>Trợ giúp và Hỏi đáp</ion-label>
-      <ion-icon name="help" size="large" slot="start"></ion-icon>
-    </ion-item>
-    <ion-item lines="none">
-      <ion-label>Đánh giá ứng dụng</ion-label>
-      <ion-icon name="star" size="large" slot="start"></ion-icon>
-    </ion-item>
-    <ion-item-divider>
-      <ion-label>Chia sẻ với mọi người</ion-label>
-      <ion-icon name="share-social" size="large" slot="start"></ion-icon>
-    </ion-item-divider>
-    <ion-item lines="none">
-      <ion-label>Hiển thị màu kết quả ngay khi làm</ion-label>
-      <ion-toggle slot="end" color="success" checked></ion-toggle>
-    </ion-item>
-    <ion-item-divider>
-      <ion-label>Hiển thị gợi ý và đáp án đúng khi ôn tập</ion-label>
-      <ion-toggle slot="end" color="success" checked></ion-toggle>
-    </ion-item-divider>
-    <ion-item lines="none">
-      <ion-label>Hẹn giờ</ion-label>
-      <ion-icon name="alarm" size="large" slot="start"></ion-icon>
-    </ion-item>
-  </ion-list> -->
-  <ion-list>
+  <img class="cover" src="assets/cover.png" alt="">
+  <ion-list style="margin-top: 20px;">
     <ion-item lines='none' (click)="router.navigate(['tabs/tab1'])" >
+      <ion-avatar slot="start">
+        <img src="assets/icon/icon-16.png">
+      </ion-avatar>
       <ion-label><h1>Trang chủ</h1></ion-label>
-      <ion-icon name="home-outline" slot="start"></ion-icon>
     </ion-item>
     <ion-item lines='none' (click)="setType()">
+      <ion-avatar slot="start">
+        <img src="assets/icon/icon-17.png">
+      </ion-avatar>
       <ion-label><h1>bằng lái</h1></ion-label>
       <ion-note slot="end">{{type | uppercase}}</ion-note>
-      <ion-icon name="reader-outline" slot="start"></ion-icon>
     </ion-item>
     <ion-item lines='none'>
+      <ion-avatar slot="start">
+        <img src="assets/icon/icon-15.png">
+      </ion-avatar>
       <ion-label><h1>Đánh giá</h1></ion-label>
-      <ion-icon name="star-outline" slot="start"></ion-icon>
     </ion-item>
     <ion-item lines='none' (click)="share()">
+      <ion-avatar slot="start">
+        <img src="assets/icon/icon-19.png">
+      </ion-avatar>
       <ion-label><h1>Chia sẻ</h1></ion-label>
-      <ion-icon name="share-social-outline" slot="start"></ion-icon>
     </ion-item>
     <ion-item lines='none' (click)="openMail()">
+      <ion-avatar slot="start">
+        <img src="assets/icon/icon-18.png">
+      </ion-avatar>
       <ion-label><h1>Trợ giúp & Hỏi đáp</h1></ion-label>
-      <ion-icon name="information-circle-outline" slot="start"></ion-icon>
     </ion-item>
     <!-- <ion-item lines='none' style="margin-top: 50px;
     border-top: #e8e8e8ab solid 1px;
@@ -73,15 +50,5 @@
     </ion-item> -->
   </ion-list>
   <img style="margin-top: 20px;" src="assets/xuphat.png" alt="">
-  <p style="text-align: right">Nguồn ảnh: Tri Thức Trẻ</p>
-  <!-- <ion-row>
-    <ion-col size="8" >
-      <h3>Hiển thị màu kết quả ngay khi làm</h3>
-    </ion-col>
-    <ion-col size="4" >
-      <ion-item lines="none">
-        <ion-toggle slot="end" name="blueberry" checked></ion-toggle>
-      </ion-item>
-    </ion-col>
-  </ion-row> -->
-</ion-content>
+  <p style="text-align: right">Nguồn ảnh: Tri Thức Trẻ &nbsp; &nbsp;</p>
+</ion-content>  

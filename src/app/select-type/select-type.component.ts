@@ -20,10 +20,10 @@ export class SelectTypeComponent implements OnInit {
       name: 'a2',
       desc: 'Xe moto 2 bánh'
     },
-    {
-      name: 'b1',
-      desc: 'Xe oto tải trọng dưới 3.5 tấn'
-    },
+    // {
+    //   name: 'b1',
+    //   desc: 'Xe oto tải trọng dưới 3.5 tấn'
+    // },
     {
       name: 'b2',
       desc: 'Xe oto chở người dưới 9 chỗ'
