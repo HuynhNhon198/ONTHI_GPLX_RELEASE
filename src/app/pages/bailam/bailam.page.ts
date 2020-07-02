@@ -32,6 +32,8 @@ export class BailamPage implements OnInit {
   num: number;
   index: number;
   preData: any;
+  slideQues: any[];
+  currentSlide = 0;
   constructor(private loadingController: LoadingController, public navCtrl: NavController, private helper: HelperService, public modalCtrl: ModalController, private menu: MenuController, public alertController: AlertController) {
 
   }
@@ -76,6 +78,7 @@ export class BailamPage implements OnInit {
       this.num = questions.num;
       // alert(this.num);
       this.questions = questions.questions;
+      this.slideQues = this.questions.map((x, i) => i);
       if (this.byDay) { } else {
         this.countDown();
       }
@@ -93,6 +96,7 @@ export class BailamPage implements OnInit {
       }
       this.getAnswersOfType(this.questions[this.index].result);
     }
+    this.currentSlide = await this.slide.getActiveIndex();
   }
   // checkboxChange() {
   //   setTimeout(() => {
@@ -255,6 +259,7 @@ export class BailamPage implements OnInit {
   slideTo(index: number) {
     this.menu.close();
     this.slide.slideTo(index);
+    this.currentSlide = index;
   }
 
   async dismiss() {

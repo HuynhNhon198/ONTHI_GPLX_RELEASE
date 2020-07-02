@@ -48,11 +48,19 @@
     </ion-header>
 
     <ion-content id="main" fullscreen class="ion-padding">
+
+
+      <div class="horizontal-scroll" *ngIf="slideQues">
+        <ion-chip color="primary" *ngFor="let item of slideQues; let i = index" [outline]='currentSlide !== i' (click)="slideTo(i)">
+          <ion-label >Câu {{item + 1}}</ion-label>
+        </ion-chip>
+      </div>
+
       <ion-slides #slide (ionSlideWillChange)='slideChange()'>
 
-        <ion-slide *ngFor="let question of questions; let i= index" >
+        <ion-slide *ngFor="let question of questions; let i= index"  >
           <div class="slide">
-            <h4>Câu {{i+1}}/{{questions.length}}</h4>
+            <h4 *ngIf="!slideQues">Câu {{i+1}}/{{questions.length}}</h4>
             <ion-text color="dark">
               <h5>{{question.question}}</h5>
             </ion-text>

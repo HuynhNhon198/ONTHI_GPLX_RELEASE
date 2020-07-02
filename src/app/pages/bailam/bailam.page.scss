@@ -3,7 +3,19 @@ ion-toolbar {
     text-align: center;
   }
 }
+.horizontal-scroll {
+  overflow: auto;
+  white-space: nowrap;
 
+  ion-chip {
+    margin: 15px 0 15px 15px;
+    border-radius: 4px;
+
+    &:nth-child(1) {
+      margin-left: 0px
+    }
+  }
+}
 // ion-slides {
 //     height: 100%;
 // }

@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-button (click)="dismiss()">
         <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid>
+  <!-- <ion-grid>
     <ion-row class="inline-row" (click)="randomCauHoi()">
       <div class="item-margin">
         <div class="item-border">
@@ -25,5 +25,30 @@
         </div>
       </div>
     </ion-row>
-  </ion-grid>
+  </ion-grid> -->
+  <ion-item lines='none' class="inline-row" >
+    <ion-avatar slot="start">
+      <img [src]="'assets/random.png'">
+    </ion-avatar>
+    <ion-label>
+      <h3>Ngẫu Nhiên</h3>
+      <p>
+        Chọn 1 đề bất kì
+      </p>
+    </ion-label>
+    <ion-note  (click)="randomCauHoi()"slot="end">LÀM BÀI</ion-note>
+  </ion-item>
+
+  <ion-item lines='none' *ngFor="let item of listQuestions; let i = index" class="inline-row" >
+    <ion-avatar slot="start">
+      <img [src]="'assets/file.png'">
+    </ion-avatar>
+    <ion-label>
+      <h3>Đề Số {{item.num}}</h3>
+      <p>
+        {{item.q_length}} câu - {{item.time/60}} phút
+      </p>
+    </ion-label>
+    <ion-note (click)="presentCauHoi(item.id, item.time)" slot="end">LÀM BÀI</ion-note>
+  </ion-item>
 </ion-content>
